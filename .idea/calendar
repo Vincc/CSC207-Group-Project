@@ -39,3 +39,52 @@ public class GoogleCalendarExample {
         }
     }
 }
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CalendarController {
+    private Map<Integer, CalendarEvent> events = new HashMap<>();
+    private int eventIdCounter = 1;
+
+    
+    public CalendarEvent createEvent(CalendarEvent event) {
+        int eventId = eventIdCounter++;
+        event.setEventId(eventId);
+        events.put(eventId, event);
+        return event;
+    }
+
+    
+    public CalendarEvent getEvent(int eventId) {
+        return events.get(eventId);
+    }
+
+    
+    public List<CalendarEvent> getEventsForGroup(int groupId) {
+        List<CalendarEvent> groupEvents = new ArrayList<>();
+        for (CalendarEvent event : events.values()) {
+            if (event.getGroupId() == groupId) {
+                groupEvents.add(event);
+            }
+        }
+        return groupEvents;
+    }
+
+   
+    public CalendarEvent updateEvent(int eventId, CalendarEvent updatedEvent) {
+        if (events.containsKey(eventId)) {
+            updatedEvent.setEventId(eventId);
+            events.put(eventId, updatedEvent);
+            return updatedEvent;
+        }
+        return null; // Event with the specified ID doesn't exist
+    }
+
+
+    public void deleteEvent(int eventId) {
+        events.remove(eventId);
+    }
+}
+
