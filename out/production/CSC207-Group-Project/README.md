@@ -16,14 +16,8 @@ user authentication and exporting event details to external calendars.
 Location Data - Open Cage:
 https://opencagedata.com/api
 
-Screenshot of generating API-key for testing:  
+Screenshot of generating API-key for testing:
 ![Alt text](images/openCage.png?raw=true)
-
-Longitude and latitude inputs:  
-![Alt text](images/longlat.png?raw=true)
-
-Output dictionary containing location data:  
-![Alt text](images/goethes.png?raw=true)
 
 Calendar exports - Google Calendar api:
 https://developers.google.com/calendar/api/guides/overview
