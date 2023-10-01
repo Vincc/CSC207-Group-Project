@@ -9,7 +9,6 @@ For instance, if they want to play soccer at 13:00 at the Harthouse field, they 
 for that purpose. Nearby individuals in the area will then have the opportunity to join this group
 and participate in the sporting activity.
 
-
 API use:
 Areas of the project where APIs could be used include fetching location data, group-chats for sports events, 
 user authentication and exporting event details to external calendars.
@@ -33,5 +32,3 @@ Chat system - Stream Chat (tentative):
 https://github.com/GetStream/stream-chat-java
 
 Authentication:
-
-
