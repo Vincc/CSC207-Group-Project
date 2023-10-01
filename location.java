@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.stream.Collectors;
+import java.util.Scanner;
 
 public class location {
 
@@ -11,33 +12,48 @@ public class location {
     private static final String url = "https://api.opencagedata.com/geocode/v1/json";
 
     public static void main(String[] args) {
-        double latitude = 50.976004;
-        double longitude = 11.336753;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Latitude:");
+        double latitude = in.nextDouble();
+        System.out.println("Enter Longitude:");
+        double longitude = in.nextDouble();
+//        double latitude = 50.976004;
+//        double longitude = 11.336753;
 
         try {
-            String response = reverseGeocodeLocation(latitude, longitude);
-            System.out.println(response);
+            String html_response = reverseGeoLocation(latitude, longitude);
+            String response_city = extract_City(html_response);
+            String response_country = extract_Country(html_response);
+            System.out.println(response_city + ", " + response_country);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static String reverseGeocodeLocation(double latitude, double longitude) throws IOException {
-        String urlStr = url + "?q=" + latitude + "," + longitude + "&key=" + my_key + "&key=address:1";
+    public static String reverseGeoLocation(double latitude, double longitude) throws IOException {
+        String urlStr = url + "?q=" + latitude + "," + longitude + "&key=" + my_key + "&abbrv:1";
         URL url = new URL(urlStr);
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
+        HttpURLConnection httpconnection = (HttpURLConnection) url.openConnection();
+        httpconnection.setRequestMethod("GET");
 
-        int responseCode = connection.getResponseCode();
+        int response = httpconnection.getResponseCode();
 
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+        if (response == HttpURLConnection.HTTP_OK) {
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(httpconnection.getInputStream()))) {
                 return in.lines().collect(Collectors.joining());
             }
         } else {
-            throw new IOException("Error: " + responseCode);
+            throw new IOException("Error: " + response);
         }
 
+    }
+    public static String extract_City(String response){
+        String Almost =  response.substring(response.indexOf("city") ,response.indexOf("continent"));
+        return  Almost.replace(",","");
+    }
+    public static String extract_Country(String response) {
+        String Almost = response.substring(response.indexOf("country"), response.indexOf("country_code"));
+        return Almost.replace(",", "");
     }
 }
