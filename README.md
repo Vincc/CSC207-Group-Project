@@ -9,3 +9,9 @@ For instance, if they want to play soccer at 13:00 at the Harthouse field, they 
 for that purpose. Nearby individuals in the area will then have the opportunity to join this group
 and participate in the sporting activity.
 
+api links:
+Location api: https://opencagedata.com/api#forward
+
+
+example outputs:
+Location: for entering latitude = 52.3877830 and longitude= 9.7334394 the code resulT is "Berlin,Germany " 
