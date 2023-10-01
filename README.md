@@ -14,4 +14,4 @@ Location api: https://opencagedata.com/api#forward
 
 
 example outputs:
-Location: for entering latitude = 52.3877830 and longitude= 9.7334394 the code resulT is "Berlin,Germany " 
+Location: for entering latitude = 52.3877830 and longitude= 9.7334394 the code resulT is "Hanover,Germany " 
