@@ -1,0 +1,90 @@
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.services.calendar.Calendar;
+import com.google.api.services.calendar.CalendarScopes;
+import com.google.api.services.calendar.model.CalendarList;
+import com.google.api.services.calendar.model.CalendarListEntry;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+
+public class GoogleCalendarExample {
+    public static void main(String[] args) throws IOException {
+        String clientId = "628977351300-npgjht4lksu5amnmcu0gkj6vp872lips.apps.googleusercontent.com";
+        String clientSecret = "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";
+        String url = "https://www.googleapis.com/calendar/v3/users/me/calendarList";
+
+        GoogleCredential credential = new GoogleCredential.Builder()
+                .setTransport(new com.google.api.client.http.javanet.NetHttpTransport())
+                .setJsonFactory(new com.google.api.client.json.JsonFactory())
+                .setClientSecrets(clientId, clientSecret)
+                .build();
+
+        credential.setAccessToken(accessToken);
+        Calendar calendarService = new Calendar.Builder(
+                new com.google.api.client.http.javanet.NetHttpTransport(),
+                new com.google.api.client.json.JsonFactory(),
+                credential)
+                .setApplicationName("YourAppName")
+                .build();
+
+        CalendarList calendarList = calendarService.calendarList().list().execute();
+        List<CalendarListEntry> items = calendarList.getItems();
+        for (CalendarListEntry entry : items) {
+            System.out.println("ID: " + entry.getId());
+            System.out.println("Summary: " + entry.getSummary());
+            System.out.println("Description: " + entry.getDescription());
+            System.out.println("Location: " + entry.getLocation());
+            System.out.println("Time Zone: " + entry.getTimeZone());
+            System.out.println("Etag: " + entry.getEtag());
+        }
+    }
+}
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CalendarController {
+    private Map<Integer, CalendarEvent> events = new HashMap<>();
+    private int eventIdCounter = 1;
+
+    
+    public CalendarEvent createEvent(CalendarEvent event) {
+        int eventId = eventIdCounter++;
+        event.setEventId(eventId);
+        events.put(eventId, event);
+        return event;
+    }
+
+    
+    public CalendarEvent getEvent(int eventId) {
+        return events.get(eventId);
+    }
+
+    
+    public List<CalendarEvent> getEventsForGroup(int groupId) {
+        List<CalendarEvent> groupEvents = new ArrayList<>();
+        for (CalendarEvent event : events.values()) {
+            if (event.getGroupId() == groupId) {
+                groupEvents.add(event);
+            }
+        }
+        return groupEvents;
+    }
+
+   
+    public CalendarEvent updateEvent(int eventId, CalendarEvent updatedEvent) {
+        if (events.containsKey(eventId)) {
+            updatedEvent.setEventId(eventId);
+            events.put(eventId, updatedEvent);
+            return updatedEvent;
+        }
+        return null; // Event with the specified ID doesn't exist
+    }
+
+
+    public void deleteEvent(int eventId) {
+        events.remove(eventId);
+    }
+}
+
