@@ -32,3 +32,4 @@ Chat system - Stream Chat (tentative):
 https://github.com/GetStream/stream-chat-java
 
 Authentication:
+https://docs.warrant.dev/
