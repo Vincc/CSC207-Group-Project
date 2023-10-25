@@ -5,30 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fb66889-cda7-4d5d-8492-7be1f9e3f437" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPagePresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputBoundary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInteractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputBoundery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/createEventView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSC207-Group-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CSC207-Group-Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/CSC207-Group-Project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/calendar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/images/openCage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/location.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/location.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventOutputBoundery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventOutputBoundery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/createEvent/createEventInputBoundery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/createEvent/createEventOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventOutputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoggedInView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

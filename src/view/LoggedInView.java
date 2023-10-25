@@ -1,5 +1,6 @@
     package view;
 
+    import interface_adapter.createEventPage.CreateEventPageController;
     import interface_adapter.logged_in.LoggedInState;
     import interface_adapter.logged_in.LoggedInViewModel;
     import interface_adapter.login.LoginState;
@@ -60,12 +61,9 @@
                     new ActionListener() {
                         public void actionPerformed(ActionEvent evt) {
                             if (evt.getSource().equals(createEventPage)) {
-                                LoginState currentState = loggedInViewModel.getState();
 
-                                loginController.execute(
-                                        currentState.getUsername(),
-                                        currentState.getPassword()
-                                );
+
+                                CreateEventPageController.execute();
                             }
                         }
                     }
