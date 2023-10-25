@@ -1,8 +1,6 @@
 package use_case.createEvent;
 
-import use_case.createEvent.createEventOutputData;
-
-public interface createEventOutputBoundery {
+public interface CreateEventOutputBoundery {
     void prepareSuccessView(createEventOutputData user);
 
     void prepareFailView(String error);
