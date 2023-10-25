@@ -1,7 +1,7 @@
 package use_case.createEvent;
 
 public interface CreateEventOutputBoundery {
-    void prepareSuccessView(createEventOutputData user);
+    void prepareSuccessView(CreateEventOutputData user);
 
     void prepareFailView(String error);
 }

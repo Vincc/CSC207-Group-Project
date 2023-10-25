@@ -22,7 +22,7 @@
         JPanel eventsPanel;
 
         final JButton logOut;
-        final JButton createEvent;
+        final JButton createEventPage;
 
         /**
          * A window with a title and a JButton.
@@ -51,12 +51,25 @@
 
             logOut = new JButton(loggedInViewModel.LOGOUT_BUTTON_LABEL);
             buttons.add(logOut);
-            createEvent = new JButton(loggedInViewModel.CREATE_EVENT_BUTTON_LABEL);
-            buttons.add(createEvent);
+            createEventPage = new JButton(loggedInViewModel.CREATE_EVENT_BUTTON_LABEL);
+            buttons.add(createEventPage);
 
             logOut.addActionListener(this);
-            createEvent.addActionListener(this);
 
+            createEventPage.addActionListener(                // This creates an anonymous subclass of ActionListener and instantiates it.
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent evt) {
+                            if (evt.getSource().equals(createEventPage)) {
+                                LoginState currentState = loggedInViewModel.getState();
+
+                                loginController.execute(
+                                        currentState.getUsername(),
+                                        currentState.getPassword()
+                                );
+                            }
+                        }
+                    }
+            );
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
             this.add(title);

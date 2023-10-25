@@ -5,13 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fb66889-cda7-4d5d-8492-7be1f9e3f437" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/calendar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPagePresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputBoundary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInteractor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputBoundery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/createEventView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSC207-Group-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CSC207-Group-Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/CSC207-Group-Project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/calendar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/images/openCage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/location.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/location.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventOutputBoundery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventOutputBoundery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEvent/createEventInputBoundery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEvent/createEventOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventOutputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoggedInView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -19,11 +49,12 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2WAjGPbxFFvPTxhwq3FWIcp4SEv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
@@ -33,9 +64,20 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/chang/IdeaProjects/CSC207-Group-Project/src/use_case/createEventPage",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chang\IdeaProjects\CSC207-Group-Project\src\use_case\createEventPage" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
