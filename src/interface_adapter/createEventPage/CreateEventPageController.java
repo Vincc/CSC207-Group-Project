@@ -4,12 +4,12 @@ import use_case.createEventPage.CreateEventPageInteractor;
 import use_case.createEventPage.CreateEventPageInputBoundary;
 
 
-class CreateEventPageController {
+public class CreateEventPageController {
     final CreateEventPageInputBoundary createEventPageInteractor;
     public CreateEventPageController(CreateEventPageInputBoundary createEventPageInputBoundary) {
         this.createEventPageInteractor = createEventPageInputBoundary;
     }
-    public void excecute(){
+    public void execute(){
         createEventPageInteractor.execute();
     };
 };
