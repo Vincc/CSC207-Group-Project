@@ -3,7 +3,8 @@
     import interface_adapter.createEventPage.CreateEventPageController;
     import interface_adapter.logged_in.LoggedInState;
     import interface_adapter.logged_in.LoggedInViewModel;
-    import interface_adapter.login.LoginState;
+    import interface_adapter.createEventPage.createEventPageState;
+    import interface_adapter.signup.SignupController;
 
     import javax.swing.*;
     import java.awt.*;
@@ -17,6 +18,7 @@
         public final String viewName = "logged in";
         private final LoggedInViewModel loggedInViewModel;
 
+
         JLabel username;
 
         JLabel currentEventsLabel;
@@ -24,13 +26,15 @@
 
         final JButton logOut;
         final JButton createEventPage;
+        private final CreateEventPageController CreateEventPageController;
 
         /**
          * A window with a title and a JButton.
          */
-        public LoggedInView(LoggedInViewModel loggedInViewModel) {
+        public LoggedInView(LoggedInViewModel loggedInViewModel ,CreateEventPageController controller ) {
             this.loggedInViewModel = loggedInViewModel;
             this.loggedInViewModel.addPropertyChangeListener(this);
+            this.CreateEventPageController = controller;;
 
             JLabel title = new JLabel("Logged In Screen");
             title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -61,9 +65,8 @@
                     new ActionListener() {
                         public void actionPerformed(ActionEvent evt) {
                             if (evt.getSource().equals(createEventPage)) {
-
-
-                                CreateEventPageController.execute();
+                                LoggedInState loggedInState = loggedInViewModel.getState();
+                                CreateEventPageController.execute(loggedInState.getUsername());
                             }
                         }
                     }

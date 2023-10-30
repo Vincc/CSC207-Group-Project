@@ -2,5 +2,5 @@ package use_case.createEventPage;
 
 public interface CreateEventPageInputBoundary {
 
-    void execute();
+    void execute(CreateEventPageInputData user);
 }

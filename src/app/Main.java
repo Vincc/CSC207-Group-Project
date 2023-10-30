@@ -5,12 +5,13 @@ import entity.CommonUserFactory;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.signup.SignupViewModel;
+import interface_adapter.createEventPage.createEventPageViewModel;
 import interface_adapter.ViewManagerModel;
-import use_case.login.LoginUserDataAccessInterface;
 import view.LoggedInView;
 import view.LoginView;
 import view.SignupView;
 import view.ViewManager;
+import view.createEventView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,6 +43,7 @@ public class Main {
         LoginViewModel loginViewModel = new LoginViewModel();
         LoggedInViewModel loggedInViewModel = new LoggedInViewModel();
         SignupViewModel signupViewModel = new SignupViewModel();
+        createEventPageViewModel createEventPageViewModel = new createEventPageViewModel();
 
         FileUserDataAccessObject userDataAccessObject;
         try {
@@ -56,8 +58,13 @@ public class Main {
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
         views.add(loginView, loginView.viewName);
 
-        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
-        views.add(loggedInView, loggedInView.viewName);
+        LoggedInView loggedInView = LoggedInUseCaseFactory.create(viewManagerModel,createEventPageViewModel,loggedInViewModel,userDataAccessObject);
+        views.add(loggedInView,loggedInView.viewName);
+
+        createEventView createEventView = new createEventView(createEventPageViewModel);
+        views.add(createEventView,createEventView.viewName);
+//        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
+//        views.add(loggedInView, loggedInView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();

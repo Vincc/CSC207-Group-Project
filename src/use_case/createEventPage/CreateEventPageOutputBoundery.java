@@ -1,6 +1,8 @@
 package use_case.createEventPage;
 
+import use_case.login.LoginOutputData;
+
 public interface CreateEventPageOutputBoundery {
-    void prepareSuccessView();
+    void prepareSuccessView(CreateEventPageOutputData user);
 
 }

@@ -1,15 +1,17 @@
 package interface_adapter.createEventPage;
 
+import use_case.createEventPage.CreateEventPageInputData;
 import use_case.createEventPage.CreateEventPageInteractor;
 import use_case.createEventPage.CreateEventPageInputBoundary;
 
 
-class CreateEventPageController {
+public class CreateEventPageController {
     final CreateEventPageInputBoundary createEventPageInteractor;
     public CreateEventPageController(CreateEventPageInputBoundary createEventPageInputBoundary) {
         this.createEventPageInteractor = createEventPageInputBoundary;
     }
-    public void excecute(){
-        createEventPageInteractor.execute();
+    public void execute(String username){
+        CreateEventPageInputData CreateEventPageInputData = new CreateEventPageInputData(username);
+        createEventPageInteractor.execute(CreateEventPageInputData);
     };
 };

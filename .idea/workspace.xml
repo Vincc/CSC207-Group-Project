@@ -4,15 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="6fb66889-cda7-4d5d-8492-7be1f9e3f437" name="Changes" comment="">
+    <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="first use case interactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/CreateEventPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/CreateEventPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/CreateEventPagePresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/CreateEventPagePresenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/createEventPageState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/createEventPageState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInputBoundary.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInputBoundary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInputData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInputData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInteractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInteractor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageOutputBoundery.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageOutputBoundery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageOutputData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageOutputData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/LoggedInUseCaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/LoggedInUseCaseFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPagePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPagePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEventPage/createEventPageState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/createEventPageState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/login/LoginPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/login/LoginPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputBoundery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputBoundery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoggedInView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/createEventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/createEventView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users.csv" afterDir="false" />
     </list>
-=======
-    <list default="true" id="6fb66889-cda7-4d5d-8492-7be1f9e3f437" name="Changes" comment="" />
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,59 +43,75 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="tries" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2WAjGPbxFFvPTxhwq3FWIcp4SEv" />
+    &quot;associatedIndex&quot;: 6
+    }</component>
+  <component name="ProjectId" id="2WdHSWE41aMBXO4nPElLfFxOEUE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/chang/IdeaProjects/CSC207-Group-Project/src/use_case/createEventPage",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\chang\IdeaProjects\CSC207-Group-Project\src\use_case\createEventPage" />
-    </key>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6fb66889-cda7-4d5d-8492-7be1f9e3f437" name="Changes" comment="" />
-      <created>1696182183426</created>
+      <changelist id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="" />
+      <created>1697055536438</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696182183426</updated>
-      <workItem from="1698261577742" duration="652000" />
+      <updated>1697055536438</updated>
+      <workItem from="1697055537545" duration="1642000" />
+      <workItem from="1697825894204" duration="4268000" />
+      <workItem from="1697993123921" duration="35000" />
+      <workItem from="1697993172118" duration="169000" />
+      <workItem from="1697993357242" duration="180000" />
+      <workItem from="1697993724056" duration="1217000" />
+      <workItem from="1698097310358" duration="1012000" />
+      <workItem from="1698155759145" duration="29000" />
+      <workItem from="1698156347693" duration="5068000" />
+      <workItem from="1698245710284" duration="669000" />
+      <workItem from="1698258903947" duration="13000" />
     </task>
+    <task id="LOCAL-00001" summary="first use case interactor">
+      <option name="closed" value="true" />
+      <created>1698414849645</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698414849645</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first use case interactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="first use case interactor" />
   </component>
 </project>
