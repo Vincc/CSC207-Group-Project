@@ -4,17 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/LoggedInUseCaseFactory.java" afterDir="false" />
+    <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="first use case interactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/CreateEventPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/CreateEventPageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/CreateEventPagePresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/CreateEventPagePresenter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/createEventPageViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/createEventPageViewModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/createEventPageState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEventPage/createEventPageState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInputBoundary.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInputBoundary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInputData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInputData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInteractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageInteractor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageOutputBoundery.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageOutputBoundery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageOutputData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEventPage/CreateEventPageOutputData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/LoggedInUseCaseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/LoggedInUseCaseFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPagePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/CreateEventPagePresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEventPage/createEventPageViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/createEventPageViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEventPage/createEventPageState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEventPage/createEventPageState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/login/LoginPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/login/LoginPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputBoundery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputBoundery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEventPage/CreateEventPageOutputData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoggedInView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/createEventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/createEventView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/users.csv" afterDir="false" />
@@ -85,9 +96,22 @@
       <workItem from="1698245710284" duration="669000" />
       <workItem from="1698258903947" duration="13000" />
     </task>
+    <task id="LOCAL-00001" summary="first use case interactor">
+      <option name="closed" value="true" />
+      <created>1698414849645</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698414849645</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first use case interactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="first use case interactor" />
   </component>
 </project>

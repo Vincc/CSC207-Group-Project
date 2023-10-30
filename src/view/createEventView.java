@@ -1,6 +1,7 @@
 package view;
 
 import interface_adapter.createEventPage.createEventPageViewModel;
+import interface_adapter.createEventPage.createEventPageState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class createEventView extends JPanel implements ActionListener, PropertyChangeListener {
+
+    JLabel username;
 
     public final String viewName = "createEventView";
     private final createEventPageViewModel createEventPageViewModel;
@@ -28,6 +31,8 @@ public class createEventView extends JPanel implements ActionListener, PropertyC
         this.createEventPageViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Create your event, my friend");
+        username = new JLabel();
+        username.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelTextPanel eventNameInfo = new LabelTextPanel(
@@ -51,15 +56,18 @@ public class createEventView extends JPanel implements ActionListener, PropertyC
         cancel = new JButton(createEventPageViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
 
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
+        this.add(username);
         this.add(eventTimeInfo);
         this.add(eventNameInfo);
         this.add(eventPlaceInfo);
         this.add(eventAttendanceInfo);
         this.add(eventLevelComboBox);
         this.add(buttons);
+
     }
 
     public void actionPerformed(ActionEvent evt) {
@@ -69,5 +77,7 @@ public class createEventView extends JPanel implements ActionListener, PropertyC
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         // Handle property changes
+        createEventPageState state = (createEventPageState) evt.getNewValue();
+        username.setText(state.getUsername());
     }
 }

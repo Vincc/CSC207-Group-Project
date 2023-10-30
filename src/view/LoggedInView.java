@@ -3,7 +3,7 @@
     import interface_adapter.createEventPage.CreateEventPageController;
     import interface_adapter.logged_in.LoggedInState;
     import interface_adapter.logged_in.LoggedInViewModel;
-    import interface_adapter.login.LoginState;
+    import interface_adapter.createEventPage.createEventPageState;
     import interface_adapter.signup.SignupController;
 
     import javax.swing.*;
@@ -65,7 +65,8 @@
                     new ActionListener() {
                         public void actionPerformed(ActionEvent evt) {
                             if (evt.getSource().equals(createEventPage)) {
-                                CreateEventPageController.execute();
+                                LoggedInState loggedInState = loggedInViewModel.getState();
+                                CreateEventPageController.execute(loggedInState.getUsername());
                             }
                         }
                     }

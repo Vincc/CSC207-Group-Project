@@ -4,6 +4,7 @@ import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.login.LoginViewModel;
 import use_case.createEventPage.CreateEventPageOutputBoundery;
+import use_case.createEventPage.CreateEventPageOutputData;
 
 public class CreateEventPagePresenter implements CreateEventPageOutputBoundery{
 
@@ -17,12 +18,15 @@ public class CreateEventPagePresenter implements CreateEventPageOutputBoundery{
         this.createEventPageViewModel = createEventPageViewModel;
     }
     @Override
-    public void prepareSuccessView() {
-        System.out.println("Das");
-
+    public void prepareSuccessView(CreateEventPageOutputData user) {
+        createEventPageState createEventPageState = createEventPageViewModel.getState();
+        createEventPageState.setUsername(user.getUsername());
+        this.createEventPageViewModel.setState(createEventPageState);
         this.createEventPageViewModel.firePropertyChanged();
         this.viewManagerModel.setActiveView(createEventPageViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
 
     }
+
+
 }
