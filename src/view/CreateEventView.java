@@ -14,6 +14,7 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
 
     JLabel username;
 
+
     public final String viewName = "createEventView";
     private final CreateEventViewModel createEventViewModel;
     final JTextField eventPlaceInputField = new JTextField(15);
