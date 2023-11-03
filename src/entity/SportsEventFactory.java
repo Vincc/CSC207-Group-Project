@@ -2,8 +2,11 @@ package entity;
 
 import java.time.LocalDateTime;
 
-public interface SportsEventFactory {
+public class CommonSportsEventFactory implements SportsEventFactory{
 
-    sportsEvent create(String name , LocalDateTime date , User organizer,
-                       int maxAttendance, String lvlofPlay, String location);
+
+    @Override
+    public SportsEvent create(String name, LocalDateTime date, String organizer, int maxAttendance, String lvlofPlay, String location) {
+        return new CommonSportsEvent(organizer,name, date, location, maxAttendance, lvlofPlay);
+    }
 }
