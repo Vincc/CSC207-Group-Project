@@ -1,6 +1,5 @@
-package use_case.createEvent;
+package use_case.CreateEvent;
 
 public interface CreateEventInputBoundary {
-
-    void  execute(CreateEventInputData CreateEventInputData);
+    void execute(CreateEventInputData createEventInputData);
 }
