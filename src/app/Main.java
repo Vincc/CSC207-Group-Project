@@ -2,16 +2,14 @@ package app;
 
 import data_access.FileUserDataAccessObject;
 import entity.CommonUserFactory;
+import interface_adapter.cancel.CancelViewModel;
+import interface_adapter.createEvent.CreateEventViewModel;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.signup.SignupViewModel;
-import interface_adapter.createEventPage.createEventPageViewModel;
 import interface_adapter.ViewManagerModel;
-import view.LoggedInView;
-import view.LoginView;
-import view.SignupView;
-import view.ViewManager;
-import view.createEventView;
+import use_case.login.LoginUserDataAccessInterface;
+import view.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,7 +41,8 @@ public class Main {
         LoginViewModel loginViewModel = new LoginViewModel();
         LoggedInViewModel loggedInViewModel = new LoggedInViewModel();
         SignupViewModel signupViewModel = new SignupViewModel();
-        createEventPageViewModel createEventPageViewModel = new createEventPageViewModel();
+        CreateEventViewModel createEventViewModel = new CreateEventViewModel();
+        CancelViewModel cancelViewModel = new CancelViewModel();
 
         FileUserDataAccessObject userDataAccessObject;
         try {
@@ -58,13 +57,14 @@ public class Main {
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
         views.add(loginView, loginView.viewName);
 
-        LoggedInView loggedInView = LoggedInUseCaseFactory.create(viewManagerModel,createEventPageViewModel,loggedInViewModel,userDataAccessObject);
-        views.add(loggedInView,loggedInView.viewName);
+        LoggedInView loggedInView = LoggedInUseCaseFactory.create(viewManagerModel,loggedInViewModel, createEventViewModel,userDataAccessObject,cancelViewModel);
+        views.add(loggedInView, loggedInView.viewName);
 
-        createEventView createEventView = new createEventView(createEventPageViewModel);
-        views.add(createEventView,createEventView.viewName);
-//        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
-//        views.add(loggedInView, loggedInView.viewName);
+        CancelView cancelView = new CancelView(cancelViewModel);
+        views.add(cancelView,cancelView.viewName);
+
+        CreateEventView createEventView = new CreateEventView(createEventViewModel);
+        views.add(createEventView, createEventView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
