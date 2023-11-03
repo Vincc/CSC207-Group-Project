@@ -13,11 +13,12 @@ import java.beans.PropertyChangeListener;
 public class CancelView extends JPanel implements ActionListener, PropertyChangeListener {
     JLabel username;
 
-    public final String viewName = "createEventView";
+    public final String viewName = "cancelView";
     private final CancelViewModel cancelViewModel;
 
     public CancelView(CancelViewModel cancelViewModel) {
         this.cancelViewModel = cancelViewModel;
+        this.cancelViewModel.firePropertyChanged();
         JLabel title = new JLabel("thank you for using our app");
         username = new JLabel();
         username.setAlignmentX(Component.CENTER_ALIGNMENT);

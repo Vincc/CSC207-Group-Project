@@ -34,9 +34,10 @@ public class LoggedInUseCaseFactory {
             LoginUserDataAccessInterface userDataAccessObject, CancelViewModel cancelViewModel){
         CreateEventOutputBoundary createEventOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);
         CreateEventInputBoundary createEventInteractor = new CreateEventInteractor(createEventOutputBoundary,userDataAccessObject);
+        UserFactory userFactory = new CommonUserFactory();
         CancelOutputBoundary cancelOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);
         CancelInputBoundary cancelInputBoundary = new CancelInteractor(cancelOutputBoundary,userDataAccessObject);
-        UserFactory userFactory = new CommonUserFactory();
+
         return new LoggedInController(createEventInteractor, cancelInputBoundary);
 
     }

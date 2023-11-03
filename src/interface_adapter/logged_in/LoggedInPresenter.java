@@ -38,7 +38,7 @@ public class LoggedInPresenter implements CreateEventOutputBoundary, CancelOutpu
         cancelState.setUsername(user.getUsername());
         this.cancelViewModel.setState(cancelState);
         this.cancelViewModel.firePropertyChanged();
-        this.viewManagerModel.setActiveView(createEventViewModel.getViewName());
+        this.viewManagerModel.setActiveView(cancelViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
 }
