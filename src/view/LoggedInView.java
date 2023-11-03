@@ -1,95 +1,92 @@
-    package view;
+package view;
 
-    import interface_adapter.createEventPage.CreateEventPageController;
-    import interface_adapter.logged_in.LoggedInState;
-    import interface_adapter.logged_in.LoggedInViewModel;
-    import interface_adapter.createEventPage.createEventPageState;
-    import interface_adapter.signup.SignupController;
+import interface_adapter.logged_in.LoggedInController;
+import interface_adapter.logged_in.LoggedInState;
+import interface_adapter.logged_in.LoggedInViewModel;
+import interface_adapter.login.LoginState;
 
-    import javax.swing.*;
-    import java.awt.*;
-    import java.awt.event.ActionEvent;
-    import java.awt.event.ActionListener;
-    import java.beans.PropertyChangeEvent;
-    import java.beans.PropertyChangeListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
-    public class LoggedInView extends JPanel implements ActionListener, PropertyChangeListener {
+public class LoggedInView extends JPanel implements ActionListener, PropertyChangeListener {
 
-        public final String viewName = "logged in";
-        private final LoggedInViewModel loggedInViewModel;
+    public final String viewName = "logged in";
+    private final LoggedInViewModel loggedInViewModel;
 
+    JLabel username;
 
-        JLabel username;
+    final JButton logOut;
+    final JButton createEvent;
 
-        JLabel currentEventsLabel;
-        JPanel eventsPanel;
-
-        final JButton logOut;
-        final JButton createEventPage;
-        private final CreateEventPageController CreateEventPageController;
-
-        /**
-         * A window with a title and a JButton.
-         */
-        public LoggedInView(LoggedInViewModel loggedInViewModel ,CreateEventPageController controller ) {
-            this.loggedInViewModel = loggedInViewModel;
-            this.loggedInViewModel.addPropertyChangeListener(this);
-            this.CreateEventPageController = controller;;
-
-            JLabel title = new JLabel("Logged In Screen");
-            title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-            JLabel usernameInfo = new JLabel("Currently logged in: ");
-            usernameInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-            currentEventsLabel = new JLabel("Current events:");
-            currentEventsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    private final LoggedInController loggedInController;
 
 
-            username = new JLabel();
-            username.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-            eventsPanel = new JPanel();
-            eventsPanel.setLayout(new BoxLayout(eventsPanel, BoxLayout.Y_AXIS));
+    /**
+     * A window with a title and a JButton.
+     */
+    public LoggedInView(LoggedInViewModel loggedInViewModel,LoggedInController controller) {
+        this.loggedInViewModel = loggedInViewModel;
+        this.loggedInViewModel.addPropertyChangeListener(this);
+        this.loggedInController = controller;
 
-            JPanel buttons = new JPanel();
+        JLabel title = new JLabel("Logged In Screen");
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-            logOut = new JButton(loggedInViewModel.LOGOUT_BUTTON_LABEL);
-            buttons.add(logOut);
-            createEventPage = new JButton(loggedInViewModel.CREATE_EVENT_BUTTON_LABEL);
-            buttons.add(createEventPage);
+        JLabel usernameInfo = new JLabel("Currently logged in: ");
+        username = new JLabel();
 
-            logOut.addActionListener(this);
+        JPanel buttons = new JPanel();
+        logOut = new JButton(loggedInViewModel.LOGOUT_BUTTON_LABEL);
+        buttons.add(logOut);
 
-            createEventPage.addActionListener(                // This creates an anonymous subclass of ActionListener and instantiates it.
-                    new ActionListener() {
-                        public void actionPerformed(ActionEvent evt) {
-                            if (evt.getSource().equals(createEventPage)) {
-                                LoggedInState loggedInState = loggedInViewModel.getState();
-                                CreateEventPageController.execute(loggedInState.getUsername());
-                            }
+        createEvent = new JButton(loggedInViewModel.CREATE_EVENT_BUTTON_LABEL);
+        buttons.add(createEvent);
+
+        createEvent.addActionListener(                // This creates an anonymous subclass of ActionListener and instantiates it.
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(createEvent)) {
+                            LoggedInState loggedInState = loggedInViewModel.getState();
+                            controller.executeCreateEvent(loggedInState.getUsername());
                         }
                     }
-            );
-            this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+                }
+        );
+        logOut.addActionListener(                // This creates an anonymous subclass of ActionListener and instantiates it.
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(logOut)) {
+                            LoggedInState loggedInState = loggedInViewModel.getState();
+                            controller.executeCancel(loggedInState.getUsername());
+                        }
+                    }
+                }
+        );
 
-            this.add(title);
-            this.add(usernameInfo);
-            this.add(username);
-            this.add(currentEventsLabel);
-            this.add(buttons);
-        }
 
-        /**
-         * React to a button click that results in evt.
-         */
-        public void actionPerformed(ActionEvent evt) {
-            System.out.println("Click " + evt.getActionCommand());
-        }
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        @Override
-        public void propertyChange(PropertyChangeEvent evt) {
-            LoggedInState state = (LoggedInState) evt.getNewValue();
-            username.setText(state.getUsername());
-        }
+        this.add(title);
+        this.add(usernameInfo);
+        this.add(username);
+        this.add(buttons);
     }
+
+    /**
+     * React to a button click that results in evt.
+     */
+    public void actionPerformed(ActionEvent evt) {
+        System.out.println("Click " + evt.getActionCommand());
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        LoggedInState state = (LoggedInState) evt.getNewValue();
+        username.setText(state.getUsername());
+    }
+}

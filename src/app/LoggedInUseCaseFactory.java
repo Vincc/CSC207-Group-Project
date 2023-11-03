@@ -3,51 +3,42 @@ package app;
 import entity.CommonUserFactory;
 import entity.UserFactory;
 import interface_adapter.ViewManagerModel;
-import interface_adapter.createEventPage.createEventPageViewModel;
-import interface_adapter.createEventPage.CreateEventPageController;
-import interface_adapter.createEventPage.CreateEventPagePresenter;
+import interface_adapter.cancel.CancelViewModel;
+import interface_adapter.createEvent.CreateEventViewModel;
+import interface_adapter.logged_in.LoggedInController;
+import interface_adapter.logged_in.LoggedInPresenter;
 import interface_adapter.logged_in.LoggedInViewModel;
-import interface_adapter.login.LoginPresenter;
-import use_case.createEvent.CreateEventOutputBoundery;
-import use_case.createEventPage.CreateEventPageInputBoundary;
-import use_case.createEventPage.CreateEventPageInteractor;
-import use_case.createEventPage.CreateEventPageOutputBoundery;
-import use_case.login.LoginOutputBoundary;
+import use_case.CreateEvent.CreateEventInputBoundary;
+import use_case.CreateEvent.CreateEventInteractor;
+import use_case.CreateEvent.CreateEventOutputBoundary;
+import use_case.cancel.CancelInputBoundary;
+import use_case.cancel.CancelInteractor;
+import use_case.cancel.CancelOutputBoundary;
 import use_case.login.LoginUserDataAccessInterface;
 import view.LoggedInView;
-import view.createEventView;
-//import use_case.login.LoginUserDataAccessInterface;
-
 
 public class LoggedInUseCaseFactory {
-    private LoggedInUseCaseFactory() {}
+    private LoggedInUseCaseFactory(){
+    }
+    public static LoggedInView create(ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel, CreateEventViewModel createEventViewModel,
+                                      LoginUserDataAccessInterface userDataAccessObject,CancelViewModel cancelViewModel){
 
-    public static LoggedInView create(
-            ViewManagerModel viewManagerModel,
-            createEventPageViewModel createEventPageViewModel,
-            LoggedInViewModel loggedInViewModel,
-            LoginUserDataAccessInterface userDataAccessObject) {
-
-        CreateEventPageController CreateEventPageController =
-                createLoginUseCase(viewManagerModel, createEventPageViewModel, loggedInViewModel,userDataAccessObject);
-        return new LoggedInView(loggedInViewModel, CreateEventPageController);
+        LoggedInController loggedInController =
+                createLoggedInUseCase(viewManagerModel,loggedInViewModel,createEventViewModel ,userDataAccessObject,cancelViewModel);
+        return new LoggedInView(loggedInViewModel,loggedInController);
 
     }
 
-    private static CreateEventPageController createLoginUseCase(
-            ViewManagerModel viewManagerModel,
-            createEventPageViewModel createEventPageViewModel,
-            LoggedInViewModel loggedInViewModel,
-            LoginUserDataAccessInterface userDataAccessObject) {
-
-        // Notice how we pass this method's parameters to the Presenter.
-        CreateEventPageOutputBoundery CreateEventPageOutputBoundery = new CreateEventPagePresenter
-                (viewManagerModel,loggedInViewModel,createEventPageViewModel);
-
+    private static LoggedInController createLoggedInUseCase(
+            ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel, CreateEventViewModel createEventViewModel,
+            LoginUserDataAccessInterface userDataAccessObject, CancelViewModel cancelViewModel){
+        CreateEventOutputBoundary createEventOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);
+        CreateEventInputBoundary createEventInteractor = new CreateEventInteractor(createEventOutputBoundary,userDataAccessObject);
+        CancelOutputBoundary cancelOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);
+        CancelInputBoundary cancelInputBoundary = new CancelInteractor(cancelOutputBoundary,userDataAccessObject);
         UserFactory userFactory = new CommonUserFactory();
+        return new LoggedInController(createEventInteractor, cancelInputBoundary);
 
-        CreateEventPageInputBoundary createEventPageInteractor = new CreateEventPageInteractor(CreateEventPageOutputBoundery,userDataAccessObject);
-
-        return new CreateEventPageController(createEventPageInteractor);
     }
+
 }

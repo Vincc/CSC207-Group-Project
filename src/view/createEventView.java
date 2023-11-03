@@ -1,7 +1,7 @@
 package view;
 
-import interface_adapter.createEventPage.createEventPageViewModel;
-import interface_adapter.createEventPage.createEventPageState;
+import interface_adapter.createEvent.CreateEventViewModel;
+import interface_adapter.createEvent.CreateEventState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,13 +10,12 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class createEventView extends JPanel implements ActionListener, PropertyChangeListener {
+public class CreateEventView extends JPanel implements ActionListener, PropertyChangeListener {
 
     JLabel username;
 
     public final String viewName = "createEventView";
-    private final createEventPageViewModel createEventPageViewModel;
-
+    private final CreateEventViewModel createEventViewModel;
     final JTextField eventPlaceInputField = new JTextField(15);
     final JTextField eventTimeInputField = new JTextField(15);
     final JTextField eventNameInputField = new JTextField(15);
@@ -26,9 +25,9 @@ public class createEventView extends JPanel implements ActionListener, PropertyC
     final JButton cancel;
     final JComboBox<String> eventLevelComboBox; // JComboBox for event level
 
-    public createEventView(createEventPageViewModel createEventPageViewModel) {
-        this.createEventPageViewModel = createEventPageViewModel;
-        this.createEventPageViewModel.addPropertyChangeListener(this);
+    public CreateEventView(CreateEventViewModel createEventViewModel) {
+        this.createEventViewModel = createEventViewModel;
+        this.createEventViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Create your event, my friend");
         username = new JLabel();
@@ -51,9 +50,9 @@ public class createEventView extends JPanel implements ActionListener, PropertyC
         eventLevelComboBox.addItem("Beginner");
 
         JPanel buttons = new JPanel();
-        create = new JButton(createEventPageViewModel.CREATE_EVENT_LABEL);
+        create = new JButton(createEventViewModel.CREATE_EVENT_LABEL);
         buttons.add(create);
-        cancel = new JButton(createEventPageViewModel.CANCEL_BUTTON_LABEL);
+        cancel = new JButton(createEventViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
 
 
@@ -77,7 +76,7 @@ public class createEventView extends JPanel implements ActionListener, PropertyC
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         // Handle property changes
-        createEventPageState state = (createEventPageState) evt.getNewValue();
+        CreateEventState state = (CreateEventState) evt.getNewValue();
         username.setText(state.getUsername());
     }
 }

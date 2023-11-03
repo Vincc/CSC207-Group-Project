@@ -1,9 +1,9 @@
-package use_case.CreateEvent;
+package use_case.cancel;
 
-public class CreateEventInputData {
+public class CancelInputData {
     final private String username;
 
-    public CreateEventInputData(String username) {
+    public CancelInputData(String username) {
         this.username = username;
     }
 
