@@ -60,11 +60,11 @@ public class Main {
         LoggedInView loggedInView = LoggedInUseCaseFactory.create(viewManagerModel,loggedInViewModel, createEventViewModel,userDataAccessObject,cancelViewModel);
         views.add(loggedInView, loggedInView.viewName);
 
-        CreateEventView createEventView = new CreateEventView(createEventViewModel);
-        views.add(createEventView, createEventView.viewName);
-
         CancelView cancelView = new CancelView(cancelViewModel);
         views.add(cancelView,cancelView.viewName);
+
+        CreateEventView createEventView = new CreateEventView(createEventViewModel);
+        views.add(createEventView, createEventView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();

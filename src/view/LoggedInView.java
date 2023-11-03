@@ -3,90 +3,71 @@ package view;
 import interface_adapter.logged_in.LoggedInController;
 import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
-import interface_adapter.login.LoginState;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class LoggedInView extends JPanel implements ActionListener, PropertyChangeListener {
+public class LoggedInView extends JPanel implements PropertyChangeListener {
 
-    public final String viewName = "logged in";
     private final LoggedInViewModel loggedInViewModel;
-
-    JLabel username;
-
-    final JButton logOut;
-    final JButton createEvent;
-
     private final LoggedInController loggedInController;
+    public final String viewName = "logged in";
 
+    private JLabel usernameLabel;
+    private JButton logOutButton;
+    private JButton createEventButton;
 
-
-    /**
-     * A window with a title and a JButton.
-     */
-    public LoggedInView(LoggedInViewModel loggedInViewModel,LoggedInController controller) {
+    public LoggedInView(LoggedInViewModel loggedInViewModel, LoggedInController controller) {
         this.loggedInViewModel = loggedInViewModel;
         this.loggedInViewModel.addPropertyChangeListener(this);
         this.loggedInController = controller;
 
-        JLabel title = new JLabel("Logged In Screen");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        setLayout(new BorderLayout());
 
-        JLabel usernameInfo = new JLabel("Currently logged in: ");
-        username = new JLabel();
+        JPanel topPanel = new JPanel();
+        topPanel.setBackground(new Color(129, 190, 248)); // Set background color
+        JLabel title = new JLabel("2Gether");
+        title.setFont(new Font("Arial", Font.BOLD, 24)); // Set font and size
+        title.setForeground(Color.WHITE); // Set text color
+        topPanel.add(title);
+        add(topPanel, BorderLayout.NORTH);
 
-        JPanel buttons = new JPanel();
-        logOut = new JButton(loggedInViewModel.LOGOUT_BUTTON_LABEL);
-        buttons.add(logOut);
+        JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        usernameLabel = new JLabel("Currently logged in: ");
+        centerPanel.add(usernameLabel);
+        add(centerPanel, BorderLayout.CENTER);
 
-        createEvent = new JButton(loggedInViewModel.CREATE_EVENT_BUTTON_LABEL);
-        buttons.add(createEvent);
+        JPanel buttonPanel = new JPanel();
+        createEventButton = new JButton("Create Event");
+        createEventButton.setBackground(new Color(46, 204, 113)); // Set button background color
+        createEventButton.setForeground(Color.WHITE); // Set button text color
+        logOutButton = new JButton("Log Out");
+        logOutButton.setBackground(new Color(231, 76, 60)); // Set button background color
+        logOutButton.setForeground(Color.WHITE); // Set button text color
+        buttonPanel.add(createEventButton);
+        buttonPanel.add(logOutButton);
+        add(buttonPanel, BorderLayout.SOUTH);
 
-        createEvent.addActionListener(                // This creates an anonymous subclass of ActionListener and instantiates it.
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(createEvent)) {
-                            LoggedInState loggedInState = loggedInViewModel.getState();
-                            controller.executeCreateEvent(loggedInState.getUsername());
-                        }
-                    }
-                }
-        );
-        logOut.addActionListener(                // This creates an anonymous subclass of ActionListener and instantiates it.
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(logOut)) {
-                            LoggedInState loggedInState = loggedInViewModel.getState();
-                            controller.executeCancel(loggedInState.getUsername());
-                        }
-                    }
-                }
-        );
-
-
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        this.add(title);
-        this.add(usernameInfo);
-        this.add(username);
-        this.add(buttons);
+        createEventButton.addActionListener(e -> handleCreateEvent());
+        logOutButton.addActionListener(e -> handleLogOut());
     }
 
-    /**
-     * React to a button click that results in evt.
-     */
-    public void actionPerformed(ActionEvent evt) {
-        System.out.println("Click " + evt.getActionCommand());
+    private void handleCreateEvent() {
+        LoggedInState loggedInState = loggedInViewModel.getState();
+        loggedInController.executeCreateEvent(loggedInState.getUsername());
+    }
+
+    private void handleLogOut() {
+        LoggedInState loggedInState = loggedInViewModel.getState();
+        loggedInController.executeCancel(loggedInState.getUsername());
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         LoggedInState state = (LoggedInState) evt.getNewValue();
-        username.setText(state.getUsername());
+        usernameLabel.setText("Currently logged in: " + state.getUsername());
     }
 }
