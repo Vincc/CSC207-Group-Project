@@ -41,28 +41,16 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
 
             try (FileReader reader = new FileReader(jsonFile)) {
 
-//                String row;
-//                while ((row = reader.readLine()) != null) {
-//                    String[] col = row.split(",");
-//                    String username = String.valueOf(col[headers.get("username")]);
-//                    String password = String.valueOf(col[headers.get("password")]);
-//                    String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
-//                    LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
-//                    User user = userFactory.create(username, password, ldt);
-//                    accounts.put(username, user);
 
-//                ArrayList<User> users = new ArrayList<>();
                 JSONParser parser = new JSONParser();
 
-                // Parse the JSON file into a JSON array
                 Object obj = parser.parse(reader);
                 JSONArray userList = (JSONArray) obj;
-                //userList.forEach(user -> users.add(parseUserObject((JSONObject) user)));
+
                 for(Object userobj: userList){
                     User user = parseUserObject((JSONObject) userobj);
                     accounts.put(user.getName(), user);
                 }
-
 
 
                 } catch (ParseException e) {
@@ -70,8 +58,6 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
             }
         }
         }
-
-
 
 
     @Override
@@ -98,9 +84,7 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
                 LocalDateTime creationTime = user.getCreationTime();
                 String formattedCreationTime = creationTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
                 userObject.put("creation time", formattedCreationTime);
-//                JSONArray events = new JSONArray();
-//                events.addAll(user.getJoinedEvents());
-//                userObject.put("joined events", events);
+
 
                 usersList.add(userObject);
             }
@@ -126,16 +110,9 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
     }
 
     private User parseUserObject(JSONObject userJson) {
-        String username = (String) userJson.get("username");
-        String password = (String) userJson.get("password"); // Be cautious with real passwords
+        String username = (String) userJson.get("user name");
+        String password = (String) userJson.get("password");
         LocalDateTime creationTime = LocalDateTime.parse((String) userJson.get("creation time"));
-        //JSONArray events = (JSONArray) userJson.get("events");
-
-        //List<String> even = new ArrayList<>();
-        //if (hobbiesJson != null) {
-        //   hobbiesJson.forEach(hobby -> hobbies.add((String) hobby));
-        //}
-
         return userFactory.create(username, password, creationTime);
     }
 
