@@ -114,6 +114,7 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
         String  level = (String) eventjson.get("level");
 
         SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, organizer,maxAttendance, level,location);
+        sportsEvent.setEventDescription(eventDescription);
 
         JSONArray attendanceArray = (JSONArray) eventjson.get("attendance");
         for(Object attendance : attendanceArray) {
