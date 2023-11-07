@@ -4,20 +4,21 @@ import entity.SportsEventFactory;
 import entity.User;
 import entity.UserFactory;
 import entity.SportsEvent;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import use_case.createEvent.CreateEventDataAccessInterface;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class FileEventDataAccessObject implements CreateEventDataAccessInterface {
 
 
     private final File jsonFileEvent;
-
-    private final Map<String, Integer> headers = new LinkedHashMap<>();
 
     private final Map<String, SportsEvent> events = new HashMap<>();
 
@@ -37,46 +38,31 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
             save();
         } else {
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(jsonFileEvent))) {
-                String header = reader.readLine();
+            try (FileReader reader = new FileReader(jsonFileEvent)) {
+                JSONParser parser = new JSONParser();
 
+                Object obj = parser.parse(reader);
+                JSONArray eventList = (JSONArray) obj;
 
-                String row;
-                while ((row = reader.readLine()) != null) {
-                    String[] col = row.split(",");
-                    String organizer = String.valueOf(col[headers.get("organizer")]);
-                    String eventName = String.valueOf(col[headers.get("Event name")]);
-                    String eventDescription = String.valueOf(col[headers.get("Event description")]);
-                    String eventDatetime = String.valueOf(col[headers.get("Event datetime")]);
-                    String eventLocation = String.valueOf(col[headers.get("Event location")]);
-                    int maxAttendance = Integer.parseInt(col[headers.get("Max attendance")]);
-                    String lvlOfPlay = String.valueOf(col[headers.get("level of play")]);
-
-                    LocalDateTime ldt = LocalDateTime.parse(eventDatetime);
-
-
-                    SportsEvent event = sportEventFactory.create(eventName, ldt, organizer, maxAttendance, lvlOfPlay, eventLocation);
-                    event.setEventDescription(eventDescription);
-                    events.put(eventName, event);
+                for(Object eventobj: eventList){
+                    SportsEvent sportsEvent = parseEventObject((JSONObject) eventobj);
+                    events.put(sportsEvent.getName(), sportsEvent);
                 }
+
+
+                //events.put(eventName, event);
+                } catch (ParseException e) {
+                throw new RuntimeException(e);
             }
         }
-    }
+        }
 
 
     public SportsEvent getSportEvent(String eventName){ return events.get(eventName);}
 
 
-    public boolean eventExists(String name, String place, LocalDateTime date) {
-
-        if (!events.containsKey(name)){
-            return false;
-        }
-        else {
-            SportsEvent event = events.get(name);
-            return event.getLocation().equals(place) & event.getDate().equals(date);
-        }
-
+    public boolean eventExists(String name) {
+        return events.containsKey(name);
     }
 
     public void save(SportsEvent event) {
@@ -85,23 +71,56 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
 
     }
 
-    private void save() {
-        BufferedWriter writer;
+    public void save() {
         try {
-            writer = new BufferedWriter(new FileWriter(jsonFileEvent));
-            writer.write(String.join(",", headers.keySet()));
-            writer.newLine();
+            FileWriter writer = new FileWriter(jsonFileEvent);
+            JSONArray eventList = new JSONArray();
 
-            for (SportsEvent event : events.values()) {
-                String line = String.format("%s,%s,%s,%s,%s,%s,%s",
-                        event.getOrganizer(), event.getName(), event.getEventDescription(), event.getDate(), event.getLocation(),event.getMaxAttendance(),event.lvlofPlay());
-                writer.write(line);
-                writer.newLine();
+
+            for (SportsEvent sportsEvent : events.values()) {
+                JSONObject eventObject = new JSONObject();
+
+                eventObject.put("event name", sportsEvent.getName());
+                eventObject.put("organizer", sportsEvent.getOrganizer());
+                eventObject.put("event description",sportsEvent.getEventDescription() );
+                LocalDateTime eventTime = sportsEvent.getDate();
+                String formattedEventTime = eventTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                eventObject.put("event date", formattedEventTime);
+                eventObject.put("event location", sportsEvent.getLocation());
+                eventObject.put("max attendance", sportsEvent.getMaxAttendance());
+                eventObject.put("level", sportsEvent.lvlofPlay());
+                eventObject.put("attendance", sportsEvent.getAttendance());
+                eventList.add(eventObject);
+
             }
+            writer.write(eventList.toJSONString());
+            writer.flush();
+
             writer.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
+
+    private SportsEvent parseEventObject(JSONObject eventjson){
+        String eventName = (String) eventjson.get("event name");
+        String organizer = (String) eventjson.get("organizer");
+        String eventDescription = (String) eventjson.get("event description");
+        LocalDateTime eventDate = LocalDateTime.parse((String) eventjson.get("event date"));
+        String location = (String) eventjson.get("event location");
+        int maxAttendance = (int) eventjson.get("max attendance");
+        String  level = (String) eventjson.get("level");
+
+        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, organizer,maxAttendance, level,location);
+
+        JSONArray attendanceArray = (JSONArray) eventjson.get("attendance");
+        for(Object attendance : attendanceArray) {
+            sportsEvent.addAttendance((String) attendance);
+        }
+
+        return sportsEvent;
+    }
+
 }

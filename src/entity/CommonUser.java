@@ -19,6 +19,7 @@ class CommonUser implements User {
     private String location;
 
 
+
     /**
      * Requires: password is valid.
      * @param name
@@ -60,4 +61,5 @@ class CommonUser implements User {
     public void setLocation(String location){this.location=location;}
 
     public void setUserDescription(String description){this.userDescription = description;}
+
 }

@@ -18,7 +18,7 @@ public class CommonSportsEvent implements SportsEvent {
 
     private String eventDescription;
 
-    private ArrayList<User> attendance;
+    private ArrayList<String> attendance;
 
     public CommonSportsEvent(String organizer, String eventName, LocalDateTime eventDateTime, String eventLocation, int maxAttendance, String lvlOfPlay) {
         this.organizer = organizer;
@@ -28,6 +28,7 @@ public class CommonSportsEvent implements SportsEvent {
         this.maxAttendance = maxAttendance;
         this.lvlOfPlay = lvlOfPlay;
         this.attendance = new ArrayList<>();
+        this.eventDescription = "";
     }
 
 
@@ -66,7 +67,7 @@ public class CommonSportsEvent implements SportsEvent {
         this.eventDescription = description;
     }
 
-    public ArrayList<User> getAttendance(){return this.attendance;}
+    public ArrayList<String> getAttendance(){return this.attendance;}
 
-    public void addAttendance(User user){this.attendance.add(user);}
+    public void addAttendance(String user){this.attendance.add(user);}
 }

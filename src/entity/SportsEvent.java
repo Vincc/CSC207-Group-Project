@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public interface SportsEvent {
     String getName();
@@ -14,4 +15,8 @@ public interface SportsEvent {
     String getEventDescription();
 
     void setEventDescription(String description);
+
+    ArrayList<String> getAttendance();
+
+    void addAttendance(String user);
 }

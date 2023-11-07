@@ -8,10 +8,7 @@ import use_case.signup.SignupUserDataAccessInterface;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -51,8 +48,6 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
                     User user = parseUserObject((JSONObject) userobj);
                     accounts.put(user.getName(), user);
                 }
-
-
                 } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
@@ -84,6 +79,9 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
                 LocalDateTime creationTime = user.getCreationTime();
                 String formattedCreationTime = creationTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
                 userObject.put("creation time", formattedCreationTime);
+                userObject.put("user description", user.getUserDescription());
+                userObject.put("joined events", user.getJoinedEvents());
+                //user location?
 
 
                 usersList.add(userObject);
@@ -113,7 +111,17 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
         String username = (String) userJson.get("user name");
         String password = (String) userJson.get("password");
         LocalDateTime creationTime = LocalDateTime.parse((String) userJson.get("creation time"));
-        return userFactory.create(username, password, creationTime);
+        String userDescription = (String) userJson.get("user description");
+
+        User user = userFactory.create(username, password, creationTime);
+        user.setUserDescription(userDescription);
+        List<String> joinedEvents = user.getJoinedEvents();//bug
+        JSONArray eventsArray = (JSONArray) userJson.get("joined events");
+
+        for(Object event: eventsArray){
+            user.addEvent((String) event);
+        }
+        return user;
     }
 
 }

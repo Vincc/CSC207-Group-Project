@@ -12,4 +12,10 @@ public interface User {
     LocalDateTime getCreationTime();
 
     List<String> getJoinedEvents();
+
+    String getUserDescription();
+
+    void setUserDescription(String description);
+
+    void addEvent(String event);
 }
