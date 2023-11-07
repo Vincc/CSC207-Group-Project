@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface User {
 
@@ -9,4 +10,6 @@ public interface User {
     String getPassword();
 
     LocalDateTime getCreationTime();
+
+    List<String> getJoinedEvents();
 }

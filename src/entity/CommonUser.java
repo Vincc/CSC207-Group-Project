@@ -52,7 +52,7 @@ class CommonUser implements User {
 
     public String getUserDescription(){return this.userDescription;}
 
-    public List<String>  getSportsEvents(){return this.events;}
+    public List<String>  getJoinedEvents(){return this.events;}
 
 
     public String getLocation(){return this.location;}

@@ -7,51 +7,72 @@ import use_case.signup.SignupUserDataAccessInterface;
 
 import java.io.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileWriter;
+
+
 public class FileUserDataAccessObject implements SignupUserDataAccessInterface, LoginUserDataAccessInterface {
 
-    private final File csvFile;
+    private final File jsonFile;
 
-    private final Map<String, Integer> headers = new LinkedHashMap<>();
 
     private final Map<String, User> accounts = new HashMap<>();
 
     private UserFactory userFactory;
 
-    public FileUserDataAccessObject(String csvPath, UserFactory userFactory) throws IOException {
+    public FileUserDataAccessObject(String jsonPath, UserFactory userFactory) throws IOException {
         this.userFactory = userFactory;
 
-        csvFile = new File(csvPath);
-        headers.put("username", 0);
-        headers.put("password", 1);
-        headers.put("creation_time", 2);
+        jsonFile = new File(jsonPath);
 
-        if (csvFile.length() == 0) {
+        if (jsonFile.length() == 0) {
             save();
         } else {
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
-                String header = reader.readLine();
+            try (FileReader reader = new FileReader(jsonFile)) {
 
-                // For later: clean this up by creating a new Exception subclass and handling it in the UI.
-                assert header.equals("username,password,creation_time");
+//                String row;
+//                while ((row = reader.readLine()) != null) {
+//                    String[] col = row.split(",");
+//                    String username = String.valueOf(col[headers.get("username")]);
+//                    String password = String.valueOf(col[headers.get("password")]);
+//                    String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
+//                    LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
+//                    User user = userFactory.create(username, password, ldt);
+//                    accounts.put(username, user);
 
-                String row;
-                while ((row = reader.readLine()) != null) {
-                    String[] col = row.split(",");
-                    String username = String.valueOf(col[headers.get("username")]);
-                    String password = String.valueOf(col[headers.get("password")]);
-                    String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
-                    LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
-                    User user = userFactory.create(username, password, ldt);
-                    accounts.put(username, user);
+//                ArrayList<User> users = new ArrayList<>();
+                JSONParser parser = new JSONParser();
+
+                // Parse the JSON file into a JSON array
+                Object obj = parser.parse(reader);
+                JSONArray userList = (JSONArray) obj;
+                //userList.forEach(user -> users.add(parseUserObject((JSONObject) user)));
+                for(Object userobj: userList){
+                    User user = parseUserObject((JSONObject) userobj);
+                    accounts.put(user.getName(), user);
                 }
+
+
+
+                } catch (ParseException e) {
+                throw new RuntimeException(e);
             }
         }
-    }
+        }
+
+
+
 
     @Override
     public void save(User user) {
@@ -65,18 +86,26 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
     }
 
     private void save() {
-        BufferedWriter writer;
+
         try {
-            writer = new BufferedWriter(new FileWriter(csvFile));
-            writer.write(String.join(",", headers.keySet()));
-            writer.newLine();
+            FileWriter writer = new FileWriter(jsonFile);
+            JSONArray usersList = new JSONArray();
 
             for (User user : accounts.values()) {
-                String line = String.format("%s,%s,%s",
-                        user.getName(), user.getPassword(), user.getCreationTime());
-                writer.write(line);
-                writer.newLine();
+                JSONObject userObject = new JSONObject();
+                userObject.put("user name", user.getName());
+                userObject.put("password", user.getPassword());
+                LocalDateTime creationTime = user.getCreationTime();
+                String formattedCreationTime = creationTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                userObject.put("creation time", formattedCreationTime);
+//                JSONArray events = new JSONArray();
+//                events.addAll(user.getJoinedEvents());
+//                userObject.put("joined events", events);
+
+                usersList.add(userObject);
             }
+            writer.write(usersList.toJSONString());
+            writer.flush();
 
             writer.close();
 
@@ -96,4 +125,19 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
         return accounts.containsKey(identifier);
     }
 
+    private User parseUserObject(JSONObject userJson) {
+        String username = (String) userJson.get("username");
+        String password = (String) userJson.get("password"); // Be cautious with real passwords
+        LocalDateTime creationTime = LocalDateTime.parse((String) userJson.get("creation time"));
+        //JSONArray events = (JSONArray) userJson.get("events");
+
+        //List<String> even = new ArrayList<>();
+        //if (hobbiesJson != null) {
+        //   hobbiesJson.forEach(hobby -> hobbies.add((String) hobby));
+        //}
+
+        return userFactory.create(username, password, creationTime);
+    }
+
 }
+

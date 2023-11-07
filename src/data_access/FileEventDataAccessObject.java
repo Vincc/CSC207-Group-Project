@@ -15,7 +15,7 @@ import java.util.Map;
 public class FileEventDataAccessObject implements CreateEventDataAccessInterface {
 
 
-    private final File csvFileEvent;
+    private final File jsonFileEvent;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
 
@@ -26,26 +26,18 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
 
     private SportsEventFactory sportEventFactory;
 
-    public FileEventDataAccessObject(String csvPathEvent, UserFactory userFactory, SportsEventFactory sportEventFactory) throws IOException{
+    public FileEventDataAccessObject(String jsonPathEvent, UserFactory userFactory, SportsEventFactory sportEventFactory) throws IOException{
 
         this.userFactory = userFactory;
         this.sportEventFactory = sportEventFactory;
 
-        csvFileEvent = new File(csvPathEvent);
-        headers.put("organizer", 0);
-        headers.put("Event name", 1);
-        headers.put("Event description", 2);
-        headers.put("Event datetime",3);
-        headers.put("Event location",4);
-        headers.put("Max attendance",5);
-        headers.put("level of play",6);
+        jsonFileEvent = new File(jsonPathEvent);
 
-
-        if (csvFileEvent.length() == 0) {
+        if (jsonFileEvent.length() == 0) {
             save();
         } else {
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(csvFileEvent))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(jsonFileEvent))) {
                 String header = reader.readLine();
 
 
@@ -75,7 +67,6 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
     public SportsEvent getSportEvent(String eventName){ return events.get(eventName);}
 
 
-    @Override
     public boolean eventExists(String name, String place, LocalDateTime date) {
 
         if (!events.containsKey(name)){
@@ -88,7 +79,6 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
 
     }
 
-    @Override
     public void save(SportsEvent event) {
         events.put(event.getName(), event);
         this.save();
@@ -98,7 +88,7 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
     private void save() {
         BufferedWriter writer;
         try {
-            writer = new BufferedWriter(new FileWriter(csvFileEvent));
+            writer = new BufferedWriter(new FileWriter(jsonFileEvent));
             writer.write(String.join(",", headers.keySet()));
             writer.newLine();
 
