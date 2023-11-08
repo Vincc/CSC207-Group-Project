@@ -81,7 +81,7 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
                 userObject.put("creation time", formattedCreationTime);
                 userObject.put("user description", user.getUserDescription());
                 userObject.put("joined events", user.getJoinedEvents());
-                //user location?
+                userObject.put("location", user.getLocation());
 
 
                 usersList.add(userObject);
@@ -112,15 +112,18 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
         String password = (String) userJson.get("password");
         LocalDateTime creationTime = LocalDateTime.parse((String) userJson.get("creation time"));
         String userDescription = (String) userJson.get("user description");
+        String location = (String) userJson.get("location");
 
         User user = userFactory.create(username, password, creationTime);
         user.setUserDescription(userDescription);
-        List<String> joinedEvents = user.getJoinedEvents();//bug
+        user.setLocation(location);
         JSONArray eventsArray = (JSONArray) userJson.get("joined events");
+
 
         for(Object event: eventsArray){
             user.addEvent((String) event);
         }
+
         return user;
     }
 

@@ -18,4 +18,8 @@ public interface User {
     void setUserDescription(String description);
 
     void addEvent(String event);
+
+    String getLocation();
+
+    void setLocation(String location);
 }

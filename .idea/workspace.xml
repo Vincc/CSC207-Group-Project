@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="fixed bug for FileUserDataAccessObject">
+    <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject v2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileUserDataAccessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileUserDataAccessObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data_access/FileUserDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/FileUserDataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/CommonUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/SportsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SportsEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventDataAccessInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/createEvent/CreateEventDataAccessInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,26 +42,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/Harris/Desktop/CSC207-Group-Project/src/entity",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/Harris/Desktop/CSC207-Group-Project/src/entity&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/entity" />
@@ -122,7 +114,9 @@
       <workItem from="1699047287688" duration="1763000" />
       <workItem from="1699316725174" duration="2039000" />
       <workItem from="1699321925922" duration="13000" />
-      <workItem from="1699321959517" duration="16808000" />
+      <workItem from="1699321959517" duration="17727000" />
+      <workItem from="1699408456371" duration="1000" />
+      <workItem from="1699408464619" duration="419000" />
     </task>
     <task id="LOCAL-00001" summary="first use case interactor">
       <option name="closed" value="true" />
@@ -164,7 +158,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699331251682</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject">
+      <option name="closed" value="true" />
+      <created>1699393317683</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699393317683</updated>
+    </task>
+    <task id="LOCAL-00007" summary="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject v2">
+      <option name="closed" value="true" />
+      <created>1699400280580</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699400280580</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +191,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="origin/branch1" />
                       </list>
                     </value>
                   </entry>
@@ -199,7 +209,9 @@
     <MESSAGE value="2" />
     <MESSAGE value="save user using json file" />
     <MESSAGE value="fixed bug for FileUserDataAccessObject" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug for FileUserDataAccessObject" />
+    <MESSAGE value="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject" />
+    <MESSAGE value="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject v2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
