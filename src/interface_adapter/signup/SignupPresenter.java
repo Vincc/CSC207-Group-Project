@@ -52,7 +52,7 @@ public class SignupPresenter implements SignupOutputBoundary, CancelOutputBounda
     }
 
     public void prepareSuccessView(CancelOutputData user) {
-        LoginState cancelState = loginViewModel.getState();aa
+        LoginState cancelState = loginViewModel.getState();
         cancelState.setUsername(user.getUsername());
         this.loginViewModel.setState(cancelState);
         this.loginViewModel.firePropertyChanged();
