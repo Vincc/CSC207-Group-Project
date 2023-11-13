@@ -6,6 +6,19 @@ import use_case.CreateEvent.CreateEventOutputData;
 import use_case.login.LoginUserDataAccessInterface;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class CancelInteractor implements CancelInputBoundary{
     final CancelOutputBoundary cancelOutputBoundary;
     final FileUserDataAccessObject userDataAccessObject;

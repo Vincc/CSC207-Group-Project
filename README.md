@@ -34,4 +34,14 @@ https://github.com/GetStream/stream-chat-java
 Authentication:
 https://docs.warrant.dev/
 
-CHECK 
+Documentation:
+
+Getting Json Working - Installing json simple:
+https://code.google.com/archive/p/json-simple/
+1) Json simple is located in \lib
+2) Go to File < Project Structure < Modules
+3) Click on Dependencies tab
+4) Click on "+", select the simple json jar file from lib, and then "ok".
+
+
+

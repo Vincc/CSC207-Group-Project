@@ -5,87 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="modify FileEventDataAccessObject FileUserDataAccessObject and entities.">
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/LoggedInUseCaseFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/LoginUseCaseFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/SignupUseCaseFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileUserDataAccessObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/InMemoryUserDataAccessObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonUserFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/PasswordValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/PasswordValidatorService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEventFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/UserFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/sportsEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/UserCreationFailed.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/ViewManagerModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/ViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/cancel/CancelState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/cancel/CancelViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/clear_users/ClearController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/clear_users/ClearPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/clear_users/ClearState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/clear_users/ClearViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/logged_in/LoggedInController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/logged_in/LoggedInPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/logged_in/LoggedInState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/logged_in/LoggedInViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/login/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/login/LoginPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/login/LoginState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/login/LoginViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/signup/SignupController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/signup/SignupPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/signup/SignupState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/signup/SignupViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/location.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/cancel/CancelInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/cancel/CancelInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/cancel/CancelInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/cancel/CancelOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/cancel/CancelOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/clear_users/ClearInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/clear_users/ClearInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/clear_users/ClearInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/clear_users/ClearOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/clear_users/ClearOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/clear_users/ClearUserDataAccessInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEvent/CreateEventInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEvent/CreateEventInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEvent/CreateEventInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEvent/CreateEventOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/createEvent/createEventOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/login/LoginInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/login/LoginInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/login/LoginInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/login/LoginOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/login/LoginOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/login/LoginUserDataAccessInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/signup/SignupInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/signup/SignupInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/signup/SignupInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/signup/SignupOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/signup/SignupOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/signup/SignupUserDataAccessInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CancelView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LabelTextPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoggedInView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/SignupView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/SignupView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/SignupView$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/SignupView$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/SignupView$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/SignupView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/ViewManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSC207-Group-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CSC207-Group-Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/clear_users/ClearController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/clear_users/ClearPresenter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/clear_users/ClearState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/clear_users/ClearViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/cancel/CancelInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/cancel/CancelInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/clear_users/ClearInputBoundary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/clear_users/ClearInputData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/clear_users/ClearInteractor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/clear_users/ClearOutputBoundary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/clear_users/ClearOutputData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/clear_users/ClearUserDataAccessInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SignupView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SignupView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,30 +53,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/Harris/Desktop/CSC207-Group-Project/src/entity&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "create.test.in.the.same.root": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/chang/IdeaProjects/CSC207-Group-Project/lib/json-simple-1.1.1.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/entity" />
       <recent name="$PROJECT_DIR$/src/data_access" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chang\IdeaProjects\CSC207-Group-Project\lib" />
     </key>
   </component>
   <component name="RunManager">
@@ -298,17 +235,5 @@
     <MESSAGE value="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject v2" />
     <MESSAGE value="modify FileEventDataAccessObject FileUserDataAccessObject and entities." />
     <option name="LAST_COMMIT_MESSAGE" value="modify FileEventDataAccessObject FileUserDataAccessObject and entities." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/use_case/cancel/CancelInteractor.java</url>
-          <line>8</line>
-          <properties field="cancelOutputBoundary" class="use_case.cancel.CancelInteractor" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
