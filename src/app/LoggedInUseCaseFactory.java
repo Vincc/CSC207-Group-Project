@@ -1,5 +1,6 @@
 package app;
 
+import data_access.FileUserDataAccessObject;
 import entity.CommonUserFactory;
 import entity.UserFactory;
 import interface_adapter.ViewManagerModel;
@@ -21,7 +22,7 @@ public class LoggedInUseCaseFactory {
     private LoggedInUseCaseFactory(){
     }
     public static LoggedInView create(ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel, CreateEventViewModel createEventViewModel,
-                                      LoginUserDataAccessInterface userDataAccessObject,CancelViewModel cancelViewModel){
+                                      FileUserDataAccessObject userDataAccessObject,CancelViewModel cancelViewModel){
 
         LoggedInController loggedInController =
                 createLoggedInUseCase(viewManagerModel,loggedInViewModel,createEventViewModel ,userDataAccessObject,cancelViewModel);
@@ -31,7 +32,7 @@ public class LoggedInUseCaseFactory {
 
     private static LoggedInController createLoggedInUseCase(
             ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel, CreateEventViewModel createEventViewModel,
-            LoginUserDataAccessInterface userDataAccessObject, CancelViewModel cancelViewModel){
+            FileUserDataAccessObject userDataAccessObject, CancelViewModel cancelViewModel){
         CreateEventOutputBoundary createEventOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);
         CreateEventInputBoundary createEventInteractor = new CreateEventInteractor(createEventOutputBoundary,userDataAccessObject);
         UserFactory userFactory = new CommonUserFactory();
