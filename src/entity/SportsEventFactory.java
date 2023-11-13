@@ -4,6 +4,6 @@ import java.time.LocalDateTime;
 
 public interface SportsEventFactory {
 
-    sportsEvent create(String name , LocalDateTime date , User organizer,
+    SportsEvent create(String name , LocalDateTime date , String organizer,
                        int maxAttendance, String lvlofPlay, String location);
 }
