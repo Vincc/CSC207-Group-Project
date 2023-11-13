@@ -1,26 +1,32 @@
 package interface_adapter.signup;
 
+import interface_adapter.cancel.CancelState;
+import interface_adapter.cancel.CancelViewModel;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.ViewManagerModel;
+import use_case.cancel.CancelOutputBoundary;
+import use_case.cancel.CancelOutputData;
 import use_case.signup.SignupOutputBoundary;
 import use_case.signup.SignupOutputData;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class SignupPresenter implements SignupOutputBoundary {
+public class SignupPresenter implements SignupOutputBoundary, CancelOutputBoundary {
 
     private final SignupViewModel signupViewModel;
     private final LoginViewModel loginViewModel;
+    private final CancelViewModel cancelViewModel;
     private ViewManagerModel viewManagerModel;
 
     public SignupPresenter(ViewManagerModel viewManagerModel,
                            SignupViewModel signupViewModel,
-                           LoginViewModel loginViewModel) {
+                           LoginViewModel loginViewModel, CancelViewModel cancelViewModel) {
         this.viewManagerModel = viewManagerModel;
         this.signupViewModel = signupViewModel;
         this.loginViewModel = loginViewModel;
+        this.cancelViewModel = cancelViewModel;
     }
 
     @Override
@@ -43,5 +49,14 @@ public class SignupPresenter implements SignupOutputBoundary {
         SignupState signupState = signupViewModel.getState();
         signupState.setUsernameError(error);
         signupViewModel.firePropertyChanged();
+    }
+
+    public void prepareSuccessView(CancelOutputData user) {
+        CancelState cancelState = cancelViewModel.getState();
+        cancelState.setUsername(user.getUsername());
+        this.cancelViewModel.setState(cancelState);
+        this.cancelViewModel.firePropertyChanged();
+        this.viewManagerModel.setActiveView(cancelViewModel.getViewName());
+        this.viewManagerModel.firePropertyChanged();
     }
 }
