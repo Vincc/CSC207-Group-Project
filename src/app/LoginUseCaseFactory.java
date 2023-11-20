@@ -1,19 +1,26 @@
 package app;
 
+import data_access.FileUserDataAccessObject;
 import entity.CommonUserFactory;
 import entity.UserFactory;
 import interface_adapter.ViewManagerModel;
+import interface_adapter.cancel.CancelViewModel;
 import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginPresenter;
 import interface_adapter.login.LoginViewModel;
+import use_case.cancel.CancelInputBoundary;
+import use_case.cancel.CancelInteractor;
+import use_case.cancel.CancelOutputBoundary;
 import use_case.login.LoginInputBoundary;
 import use_case.login.LoginOutputBoundary;
 import use_case.login.LoginInteractor;
 import use_case.login.LoginUserDataAccessInterface;
+import view.CancelView;
 import view.LoginView;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 
 public class LoginUseCaseFactory {
@@ -25,10 +32,11 @@ public class LoginUseCaseFactory {
             ViewManagerModel viewManagerModel,
             LoginViewModel loginViewModel,
             LoggedInViewModel loggedInViewModel,
-            LoginUserDataAccessInterface userDataAccessObject) {
+            FileUserDataAccessObject userDataAccessObject,
+            CancelViewModel cancelViewModel) {
 
         try {
-            LoginController loginController = createLoginUseCase(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
+            LoginController loginController = createLoginUseCase(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject, cancelViewModel);
             return new LoginView(loginViewModel, loginController);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Could not open user data file.");
@@ -41,16 +49,18 @@ public class LoginUseCaseFactory {
             ViewManagerModel viewManagerModel,
             LoginViewModel loginViewModel,
             LoggedInViewModel loggedInViewModel,
-            LoginUserDataAccessInterface userDataAccessObject) throws IOException {
+            FileUserDataAccessObject userDataAccessObject,
+            CancelViewModel cancelViewModel) throws IOException {
 
         // Notice how we pass this method's parameters to the Presenter.
-        LoginOutputBoundary loginOutputBoundary = new LoginPresenter(viewManagerModel, loggedInViewModel, loginViewModel);
+        LoginOutputBoundary loginOutputBoundary = new LoginPresenter(viewManagerModel, loggedInViewModel, loginViewModel, cancelViewModel);
 
         UserFactory userFactory = new CommonUserFactory();
 
         LoginInputBoundary loginInteractor = new LoginInteractor(
                 userDataAccessObject, loginOutputBoundary);
-
-        return new LoginController(loginInteractor);
+        CancelOutputBoundary cancelOutputBoundary = new LoginPresenter(viewManagerModel, loggedInViewModel, loginViewModel, cancelViewModel);
+        CancelInputBoundary cancelInteractor = new CancelInteractor(cancelOutputBoundary, userDataAccessObject);
+        return new LoginController(loginInteractor, cancelInteractor);
     }
 }
