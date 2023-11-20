@@ -1,14 +1,16 @@
 package entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class CommonSportsEvent implements SportsEvent {
 
     private String organizer;
     private String eventName;
-
-    private LocalDateTime eventDateTime;
+    private LocalDate eventDate;
+    private LocalTime eventTime;
 
     private String eventLocation;
 
@@ -20,10 +22,11 @@ public class CommonSportsEvent implements SportsEvent {
 
     private ArrayList<String> attendance;
 
-    public CommonSportsEvent(String organizer, String eventName, LocalDateTime eventDateTime, String eventLocation, int maxAttendance, String lvlOfPlay) {
+    public CommonSportsEvent(String organizer, String eventName, LocalDate eventDate, LocalTime eventTime, String eventLocation, int maxAttendance, String lvlOfPlay) {
         this.organizer = organizer;
         this.eventName = eventName;
-        this.eventDateTime = eventDateTime;
+        this.eventDate = eventDate;
+        this.eventTime = eventTime;
         this.eventLocation = eventLocation;
         this.maxAttendance = maxAttendance;
         this.lvlOfPlay = lvlOfPlay;
@@ -42,8 +45,13 @@ public class CommonSportsEvent implements SportsEvent {
     }
 
     @Override
-    public LocalDateTime getDate() {
-        return eventDateTime;
+    public LocalDate getDate() {
+        return eventDate;
+    }
+
+    @Override
+    public LocalTime getTime() {
+        return eventTime;
     }
 
     @Override

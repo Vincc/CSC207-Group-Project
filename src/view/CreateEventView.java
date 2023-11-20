@@ -2,8 +2,13 @@ package view;
 
 import interface_adapter.createEvent.CreateEventViewModel;
 import interface_adapter.createEvent.CreateEventState;
+import interface_adapter.login.LoginState;
+import interface_adapter.createEvent.CreateEventController;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.TimePicker;
 import javax.swing.*;
+import javax.swing.text.LabelView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,16 +22,17 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
 
     public final String viewName = "createEventView";
     private final CreateEventViewModel createEventViewModel;
+    private final CreateEventController createEventController;
     final JTextField eventPlaceInputField = new JTextField(15);
-    final JTextField eventTimeInputField = new JTextField(15);
+    final DatePicker eventDateInputField = new DatePicker();
+    final TimePicker eventTimeInputField = new TimePicker();
     final JTextField eventNameInputField = new JTextField(15);
     final JTextField eventAttendanceInputField = new JTextField(15);
-
     final JButton create;
     final JButton cancel;
     final JComboBox<String> eventLevelComboBox; // JComboBox for event level
-
-    public CreateEventView(CreateEventViewModel createEventViewModel) {
+    public CreateEventView(CreateEventViewModel createEventViewModel, CreateEventController createEventController) {
+        this.createEventController = createEventController;
         this.createEventViewModel = createEventViewModel;
         this.createEventViewModel.addPropertyChangeListener(this);
 
@@ -37,8 +43,8 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
 
         LabelTextPanel eventNameInfo = new LabelTextPanel(
                 new JLabel("Event Name"), eventNameInputField);
-        LabelTextPanel eventTimeInfo = new LabelTextPanel(
-                new JLabel("Event Time"), eventTimeInputField);
+
+
         LabelTextPanel eventPlaceInfo = new LabelTextPanel(
                 new JLabel("Event Place"), eventPlaceInputField);
         LabelTextPanel eventAttendanceInfo = new LabelTextPanel(
@@ -56,12 +62,32 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
         cancel = new JButton(createEventViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
 
+        create.addActionListener(                // This creates an anonymous subclass of ActionListener and instantiates it.
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(create)) {
+                            CreateEventState currentState = createEventViewModel.getState();
+
+                            createEventController.executeMakeEvent(
+                                    currentState.getDiscription(),
+                                    currentState.getPlace(),
+                                    currentState.getDate(),
+                                    currentState.getTime(),
+                                    currentState.getSporttype(),
+                                    currentState.getLvl(),
+                                    currentState.getMaxplayers()
+                            );
+                        }
+                    }
+                }
+        );
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
         this.add(username);
-        this.add(eventTimeInfo);
+        this.add(eventDateInputField);
+        this.add(eventTimeInputField);
         this.add(eventNameInfo);
         this.add(eventPlaceInfo);
         this.add(eventAttendanceInfo);

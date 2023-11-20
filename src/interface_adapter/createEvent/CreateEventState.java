@@ -1,9 +1,15 @@
 package interface_adapter.createEvent;
 
+import javax.ejb.Local;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 public class CreateEventState {
     private String username = "";
     private String place = "";
-    private String time = "";
+    private LocalDate date = LocalDate.now();
+    private LocalTime time = LocalTime.now();
     private String lvl = "";
     private int maxplayers=0;
     private String sporttype = "";
@@ -13,6 +19,7 @@ public class CreateEventState {
 
         username = copy.username;
         place = copy.place;
+        date = copy.date;
         time = copy.time;
         lvl = copy.lvl;
         maxplayers = copy.maxplayers;
@@ -43,7 +50,8 @@ public class CreateEventState {
         return sporttype;
     }
 
-    public String getTime() {
+    public LocalDate getDate() {return date;}
+    public LocalTime getTime() {
         return time;
     }
 
@@ -66,8 +74,8 @@ public class CreateEventState {
     public void setSporttype(String sporttype) {
         this.sporttype = sporttype;
     }
-
-    public void setTime(String time) {
+    public void setDate(LocalDate date) {this.date = date;}
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 

@@ -1,6 +1,8 @@
 package app;
 
+import data_access.FileEventDataAccessObject;
 import data_access.FileUserDataAccessObject;
+import entity.CommonSportsEventFactory;
 import entity.CommonUserFactory;
 import interface_adapter.cancel.CancelViewModel;
 import interface_adapter.createEvent.CreateEventViewModel;
@@ -50,6 +52,13 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        FileEventDataAccessObject eventDataAccessObject;
+        try {
+            eventDataAccessObject = new FileEventDataAccessObject("./events.json", new CommonUserFactory(), new CommonSportsEventFactory());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, userDataAccessObject, cancelViewModel);
         views.add(signupView, signupView.viewName);
@@ -63,7 +72,7 @@ public class Main {
         CancelView cancelView = new CancelView(cancelViewModel);
         views.add(cancelView,cancelView.viewName);
 
-        CreateEventView createEventView = new CreateEventView(createEventViewModel);
+        CreateEventView createEventView = createEventUseCaseFactory.create(viewManagerModel, loggedInViewModel, createEventViewModel, eventDataAccessObject);
         views.add(createEventView, createEventView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
