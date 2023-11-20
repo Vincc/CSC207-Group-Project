@@ -1,11 +1,14 @@
 package entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public interface SportsEvent {
     String getName();
-    LocalDateTime getDate();
+    LocalDate getDate();
+    LocalTime getTime();
 
     String getLocation();
     String getOrganizer();

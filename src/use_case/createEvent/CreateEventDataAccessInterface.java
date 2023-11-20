@@ -1,4 +1,4 @@
-package use_case.createEvent;
+package use_case.CreateEvent;
 
 import entity.SportsEvent;
 import entity.User;

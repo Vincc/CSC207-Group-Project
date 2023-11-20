@@ -8,14 +8,16 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import use_case.createEvent.CreateEventDataAccessInterface;
+import use_case.makeEvent.makeEventDataAccessInterface;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class FileEventDataAccessObject implements CreateEventDataAccessInterface {
+public class FileEventDataAccessObject implements makeEventDataAccessInterface {
 
 
     private final File jsonFileEvent;
@@ -61,7 +63,7 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
     public SportsEvent getSportEvent(String eventName){ return events.get(eventName);}
 
 
-    public boolean eventExists(String name) {
+    public boolean existsByName(String name) {
         return events.containsKey(name);
     }
 
@@ -83,9 +85,13 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
                 eventObject.put("event name", sportsEvent.getName());
                 eventObject.put("organizer", sportsEvent.getOrganizer());
                 eventObject.put("event description",sportsEvent.getEventDescription() );
-                LocalDateTime eventTime = sportsEvent.getDate();
-                String formattedEventTime = eventTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-                eventObject.put("event date", formattedEventTime);
+                LocalDate eventDate = sportsEvent.getDate();
+                LocalTime eventTime = sportsEvent.getTime();
+                String formattedEventDate = eventDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
+                String formattedEventTime = eventTime.format(DateTimeFormatter.ISO_LOCAL_TIME);
+
+                eventObject.put("event date", formattedEventDate);
+                eventObject.put("event time", formattedEventTime);
                 eventObject.put("event location", sportsEvent.getLocation());
                 eventObject.put("max attendance", sportsEvent.getMaxAttendance());
                 eventObject.put("level", sportsEvent.lvlofPlay());
@@ -108,12 +114,13 @@ public class FileEventDataAccessObject implements CreateEventDataAccessInterface
         String eventName = (String) eventjson.get("event name");
         String organizer = (String) eventjson.get("organizer");
         String eventDescription = (String) eventjson.get("event description");
-        LocalDateTime eventDate = LocalDateTime.parse((String) eventjson.get("event date"));
+        LocalTime eventTime = (LocalTime) eventjson.get("event_time");
+        LocalDate eventDate = (LocalDate) eventjson.get("event_date");
         String location = (String) eventjson.get("event location");
         int maxAttendance = (int) eventjson.get("max attendance");
         String  level = (String) eventjson.get("level");
 
-        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, organizer,maxAttendance, level,location);
+        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, eventTime, organizer,maxAttendance, level,location);
         sportsEvent.setEventDescription(eventDescription);
 
         JSONArray attendanceArray = (JSONArray) eventjson.get("attendance");
