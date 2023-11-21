@@ -22,4 +22,7 @@ public interface SportsEvent {
     ArrayList<String> getAttendance();
 
     void addAttendance(String user);
+
+    LocalDate getEventEndDate();
+    LocalTime getEventEndTime();
 }

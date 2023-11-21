@@ -90,12 +90,20 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface {
                 String formattedEventDate = eventDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
                 String formattedEventTime = eventTime.format(DateTimeFormatter.ISO_LOCAL_TIME);
 
+                LocalDate eventEndDate = sportsEvent.getEventEndDate();
+                LocalTime eventEndTime = sportsEvent.getEventEndTime();
+                String formattedEventEndDate = eventEndDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
+                String formattedEventEndTime = eventEndTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+
                 eventObject.put("event date", formattedEventDate);
                 eventObject.put("event time", formattedEventTime);
                 eventObject.put("event location", sportsEvent.getLocation());
                 eventObject.put("max attendance", sportsEvent.getMaxAttendance());
                 eventObject.put("level", sportsEvent.lvlofPlay());
                 eventObject.put("attendance", sportsEvent.getAttendance());
+                eventObject.put("event end date", formattedEventEndDate);
+                eventObject.put("event end time",formattedEventEndTime);
                 eventList.add(eventObject);
 
             }
@@ -114,20 +122,30 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface {
         String eventName = (String) eventjson.get("event name");
         String organizer = (String) eventjson.get("organizer");
         String eventDescription = (String) eventjson.get("event description");
-        LocalTime eventTime = (LocalTime) eventjson.get("event_time");
-        LocalDate eventDate = (LocalDate) eventjson.get("event_date");
+        LocalTime eventTime = (LocalTime) eventjson.get("event time");
+        LocalDate eventDate = (LocalDate) eventjson.get("event date");
         String location = (String) eventjson.get("event location");
-        int maxAttendance = (int) eventjson.get("max attendance");
+
+        //added event end date and time
+        LocalTime eventEndTime = (LocalTime) eventjson.get("event end time");
+        LocalDate eventEndDate = (LocalDate) eventjson.get("event end date");
+
+
+//        int maxAttendance = (int) eventjson.get("max attendance");
+
+        // Long ?
+        long temp = (Long) eventjson.get("max attendance");
+        int maxAttendance = (int) temp;
+
         String  level = (String) eventjson.get("level");
 
-        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, eventTime, organizer,maxAttendance, level,location);
+        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, eventTime, organizer,maxAttendance, level,location, eventEndDate,eventEndTime);
         sportsEvent.setEventDescription(eventDescription);
 
         JSONArray attendanceArray = (JSONArray) eventjson.get("attendance");
         for(Object attendance : attendanceArray) {
             sportsEvent.addAttendance((String) attendance);
         }
-
         return sportsEvent;
     }
 
