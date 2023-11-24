@@ -1,5 +1,6 @@
 package entity;
 
+import javax.ejb.Local;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -26,7 +27,7 @@ public class CommonSportsEvent implements SportsEvent {
 
     private LocalTime eventEndTime;
 
-    public CommonSportsEvent(String organizer, String eventName, LocalDate eventDate, LocalTime eventTime, String eventLocation, int maxAttendance, String lvlOfPlay, LocalDate eventEndDate, LocalTime eventEndTime) {
+    public CommonSportsEvent(String organizer, String eventName, LocalDate eventDate, LocalTime eventTime, String eventLocation, int maxAttendance, String lvlOfPlay) {
         this.organizer = organizer;
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -36,8 +37,9 @@ public class CommonSportsEvent implements SportsEvent {
         this.lvlOfPlay = lvlOfPlay;
         this.attendance = new ArrayList<>();
         this.eventDescription = "";
-        this.eventEndDate = eventEndDate;
-        this.eventEndTime = eventEndTime;
+        //change
+        this.eventEndDate = LocalDate.now();
+        this.eventEndTime = LocalTime.now();
     }
 
 

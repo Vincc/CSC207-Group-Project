@@ -92,7 +92,7 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface {
                 LocalDate eventEndDate = sportsEvent.getEventEndDate();
                 LocalTime eventEndTime = sportsEvent.getEventEndTime();
                 String formattedEventEndDate = eventEndDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
-                String formattedEventEndTime = eventEndTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+                String formattedEventEndTime = eventEndTime.format(DateTimeFormatter.ISO_LOCAL_TIME);
                 eventObject.put("event date", formattedEventDate);
                 eventObject.put("event time", formattedEventTime);
                 eventObject.put("event location", sportsEvent.getLocation());
@@ -133,7 +133,7 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface {
         int maxAttendance = (int) temp;
         String  level = (String) eventjson.get("level");
 
-        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, eventTime, organizer,maxAttendance, level,location, eventEndDate,eventEndTime);
+        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, eventTime, organizer,maxAttendance, level,location);
         sportsEvent.setEventDescription(eventDescription);
 
         JSONArray attendanceArray = (JSONArray) eventjson.get("attendance");
