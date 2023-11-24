@@ -1,15 +1,17 @@
 package interface_adapter.login;
 
+import use_case.cancel.CancelInputBoundary;
+import use_case.cancel.CancelInputData;
 import use_case.login.LoginInputData;
 import use_case.login.LoginInputBoundary;
-import use_case.signup.SignupInputBoundary;
-import use_case.signup.SignupInputData;
 
 public class LoginController {
 
     final LoginInputBoundary loginUseCaseInteractor;
-    public LoginController(LoginInputBoundary loginUseCaseInteractor) {
+    final CancelInputBoundary cancelInteractor;
+    public LoginController(LoginInputBoundary loginUseCaseInteractor, CancelInputBoundary cancelInteractor) {
         this.loginUseCaseInteractor = loginUseCaseInteractor;
+        this.cancelInteractor = cancelInteractor;
     }
 
 
@@ -18,5 +20,9 @@ public class LoginController {
                 username, password);
 
         loginUseCaseInteractor.execute(loginInputData);
+    }
+    public void executeCancel(String username){
+        CancelInputData cancelInputData = new CancelInputData(username);
+        cancelInteractor.execute(cancelInputData);
     }
 }
