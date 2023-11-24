@@ -1,5 +1,9 @@
 package view;
 
+import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
+import com.github.lgooddatepicker.optionalusertools.TimeChangeListener;
+import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
+import com.github.lgooddatepicker.zinternaltools.TimeChangeEvent;
 import interface_adapter.createEvent.CreateEventViewModel;
 import interface_adapter.createEvent.CreateEventState;
 import interface_adapter.login.LoginState;
@@ -7,13 +11,19 @@ import interface_adapter.createEvent.CreateEventController;
 
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.TimePicker;
+import interface_adapter.signup.SignupState;
+
 import javax.swing.*;
 import javax.swing.text.LabelView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class CreateEventView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -25,6 +35,7 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
     private final CreateEventController createEventController;
     final JTextField eventPlaceInputField = new JTextField(15);
     final DatePicker eventDateInputField = new DatePicker();
+
     final TimePicker eventTimeInputField = new TimePicker();
     final JTextField eventNameInputField = new JTextField(15);
     final JTextField eventAttendanceInputField = new JTextField(15);
@@ -47,6 +58,7 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
 
         LabelTextPanel eventPlaceInfo = new LabelTextPanel(
                 new JLabel("Event Place"), eventPlaceInputField);
+
         LabelTextPanel eventAttendanceInfo = new LabelTextPanel(
                 new JLabel("Max Attendance"), eventAttendanceInputField);
 
@@ -81,6 +93,91 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                     }
                 }
         );
+        eventDateInputField.addDateChangeListener(
+                new DateChangeListener() {
+                    @Override
+                    public void dateChanged(DateChangeEvent dateChangeEvent) {
+                        CreateEventState currentState = createEventViewModel.getState();
+                        LocalDate date = eventDateInputField.getDate();
+                        currentState.setDate(date);
+                        createEventViewModel.setState(currentState);
+                    }
+                });
+        eventTimeInputField.addTimeChangeListener(
+                new TimeChangeListener() {
+                    @Override
+                    public void timeChanged(TimeChangeEvent timeChangeEvent) {
+                        CreateEventState currentState = createEventViewModel.getState();
+                        LocalTime time = eventTimeInputField.getTime();
+                        currentState.setTime(time);
+                        createEventViewModel.setState(currentState);
+                    }
+                });
+        eventNameInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        CreateEventState currentState = createEventViewModel.getState();
+                        String text = eventNameInputField.getText() + e.getKeyChar();
+                        currentState.setDiscription(text);
+                        createEventViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
+        eventPlaceInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        CreateEventState currentState = createEventViewModel.getState();
+                        String text = eventPlaceInputField.getText() + e.getKeyChar();
+                        currentState.setPlace(text);
+                        createEventViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
+        eventAttendanceInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        CreateEventState currentState = createEventViewModel.getState();
+                        String text = eventAttendanceInputField.getText() + e.getKeyChar();
+                        currentState.setMaxplayers(Integer.parseInt(text));
+                        createEventViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
+        eventLevelComboBox.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        CreateEventState currentState = createEventViewModel.getState();
+                        String lvl = (String) eventLevelComboBox.getSelectedItem();
+                        currentState.setLvl(lvl);
+                        createEventViewModel.setState(currentState);
+                    }
+                }
+        );
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -105,5 +202,8 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
         // Handle property changes
         CreateEventState state = (CreateEventState) evt.getNewValue();
         username.setText(state.getUsername());
+
+
+
     }
 }

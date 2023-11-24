@@ -3,6 +3,7 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.logged_in.LoggedInState;
 
 import interface_adapter.logged_in.LoggedInViewModel;
+
 import interface_adapter.login.LoginState;
 import use_case.makeEvent.makeEventOutputBoundary;
 import use_case.makeEvent.makeEventOutputData;
@@ -20,6 +21,7 @@ public class createEventPresenter implements makeEventOutputBoundary{
     public void prepareMakeEventSuccessView() {
         LoggedInState loggedInState = loggedInViewModel.getState();
         this.loggedInViewModel.setState(loggedInState);
+
         loggedInViewModel.firePropertyChanged();
 
         viewManagerModel.setActiveView(loggedInViewModel.getViewName());
