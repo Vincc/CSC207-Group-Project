@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="modify FileEventDataAccessObject FileUserDataAccessObject and entities.">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_api_client.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_apis_api_services_calendar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_oauth_client_jetty.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSC207-Group-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CSC207-Group-Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/LoginUseCaseFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/LoginUseCaseFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/app/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileEventDataAccessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileEventDataAccessObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/login/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/login/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/login/LoginPresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/login/LoginPresenter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/signup/SignupPresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/signup/SignupPresenter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoginView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEventFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/SportsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SportsEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/SportsEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SportsEventFactory.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,10 +43,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+
+
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
