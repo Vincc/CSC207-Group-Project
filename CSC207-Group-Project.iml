@@ -35,5 +35,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="google.api.client" level="project" />
+    <orderEntry type="library" name="google.oauth.client.jetty" level="project" />
+    <orderEntry type="library" name="google.apis.api.services.calendar" level="project" />
   </component>
 </module>
