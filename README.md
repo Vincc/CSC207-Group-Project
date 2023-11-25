@@ -45,3 +45,17 @@ https://code.google.com/archive/p/json-simple/
 
 
 
+
+In order to use Google Calendar Api
+right click project -> open module setting -> dependencies -> click + -> library-> from maven.  
+Add following respectively
+
+    'com.google.api-client:google-api-client:2.0.0'
+    'com.google.oauth-client:google-oauth-client-jetty:1.34.1'
+    'com.google.apis:google-api-services-calendar:v3-rev20220715-2.0.0'
+
+Then click Apply -> OK.
+
+
+
+
