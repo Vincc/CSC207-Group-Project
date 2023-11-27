@@ -6,15 +6,33 @@
   <component name="ChangeListManager">
     <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="modify FileEventDataAccessObject FileUserDataAccessObject and entities.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/events.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileEventDataAccessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileEventDataAccessObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEventFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEventFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEventFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEventFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/makeEvent/makeEventInputData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/makeEvent/makeEventInputData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/makeEvent/makeEventInteractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/makeEvent/makeEventInteractor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data_access/GoogleCalendarApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/GoogleCalendarApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data_access/GoogleCalendarApiDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/GoogleCalendarApiDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEventFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/SportsEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SportsEventFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEvent/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEvent/CreateEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEvent/CreateEventState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEvent/CreateEventState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/makeEvent/makeEventInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/makeEvent/makeEventInputData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/use_case/makeEvent/makeEventInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/makeEvent/makeEventInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CreateEventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CreateEventView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +69,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
