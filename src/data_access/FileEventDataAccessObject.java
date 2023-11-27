@@ -119,11 +119,11 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface {
         String eventName = (String) eventjson.get("event name");
         String organizer = (String) eventjson.get("organizer");
         String eventDescription = (String) eventjson.get("event description");
-        LocalTime eventTime = (LocalTime) eventjson.get("event time");
-        LocalDate eventDate = (LocalDate) eventjson.get("event date");
+        LocalTime eventTime = (LocalTime) LocalTime.parse((String) eventjson.get("event time"), DateTimeFormatter.ISO_LOCAL_TIME);
+        LocalDate eventDate = (LocalDate) LocalDate.parse((String) eventjson.get("event date"), DateTimeFormatter.ISO_LOCAL_DATE);
         String location = (String) eventjson.get("event location");
-        LocalTime eventEndTime = (LocalTime) eventjson.get("event end time");
-        LocalDate eventEndDate = (LocalDate) eventjson.get("event end date");
+        LocalTime eventEndTime = (LocalTime) LocalTime.parse((String) eventjson.get("event end time"), DateTimeFormatter.ISO_LOCAL_TIME);
+        LocalDate eventEndDate = (LocalDate) LocalDate.parse((String) eventjson.get("event end date"), DateTimeFormatter.ISO_LOCAL_DATE);
 
 
 //        int maxAttendance = (int) eventjson.get("max attendance");
