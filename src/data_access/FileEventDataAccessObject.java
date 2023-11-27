@@ -133,7 +133,7 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface {
         int maxAttendance = (int) temp;
         String  level = (String) eventjson.get("level");
 
-        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, eventTime, organizer,maxAttendance, level,location);
+        SportsEvent sportsEvent = sportEventFactory.create(eventName, eventDate, eventEndDate, eventTime, eventEndTime, organizer,maxAttendance, level,location);
         sportsEvent.setEventDescription(eventDescription);
 
         JSONArray attendanceArray = (JSONArray) eventjson.get("attendance");

@@ -69,18 +69,16 @@ public class GoogleCalendarApi {
         Date dateUtil = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         DateTime startDateTime = new DateTime(dateUtil);
 
-
         /////
         EventDateTime start = new EventDateTime()
                 .setDateTime(startDateTime)
                 .setTimeZone("America/Los_Angeles");
         event.setStart(start);
 
-
-
-        //// set the event end time 2 hours later
-        long twoHoursInMillis = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
-        DateTime endDateTime = new DateTime(startDateTime.getValue() + twoHoursInMillis);
+        /////convert end date and end time to com.google.api.client.util.DateTime
+        LocalDateTime endlocalDateTime = LocalDateTime.of(sportsEvent.getEventEndDate(), sportsEvent.getEventEndTime());
+        Date enddateUtil = Date.from(endlocalDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        DateTime endDateTime = new DateTime(enddateUtil);
 
         EventDateTime end = new EventDateTime()
                 .setDateTime(endDateTime)

@@ -14,6 +14,8 @@ class GoogleCalendarApiDemo {
                 "organizer1",
                 "toronto football game2",
                 LocalDate.of(2023, 11, 22),
+                LocalDate.of(2023, 11, 23),
+                LocalTime.of(17, 0),
                 LocalTime.of(17, 0),
                 "Toronto2" ,
                 7,
