@@ -72,7 +72,13 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface {
         this.save();
 
     }
-
+    public void addParticipant(String eventName, String username){
+        if (existsByName(eventName)) {
+            SportsEvent sportEvent = events.get(eventName);
+            sportEvent.getAttendance().add(username);
+            this.save();
+        }
+    }
     public void save() {
         try {
             FileWriter writer = new FileWriter(jsonFileEvent);

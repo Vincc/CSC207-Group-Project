@@ -6,4 +6,5 @@ public interface makeEventDataAccessInterface {
     boolean existsByName(String identifier);
 
     void save(SportsEvent sportsEvent);
+    void addParticipant(String eventName, String username);
 }
