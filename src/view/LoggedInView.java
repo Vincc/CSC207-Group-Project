@@ -50,7 +50,6 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         centerPanel.add(usernameLabel);
         add(centerPanel, BorderLayout.WEST); // Change to BorderLayout.WEST
 
-        // Event list with scroll pane
         eventsList = new JList<>();
         eventsList.setCellRenderer(new EventListCellRenderer());
         JScrollPane scrollPane = new JScrollPane(eventsList);
@@ -184,7 +183,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
                 String levelOfPlay = extract_string(eventInfo[2]);
                 String eventLocation = extract_string(eventInfo[8]);
                 String maxAttendance = extract_string(eventInfo[7]);
-                String curAttendance = extract_string(eventInfo[9]);
+                String curAttendance = extract_cur_attendance(eventInfo[9]);
 
                 eventNameLabel.setText("<html><div style='text-align: center;'><b style='font-size: 20px; color: #3498db;'>" + eventName +
                         "</b></div></html>");
@@ -219,6 +218,18 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         private String extract_string(String start) {
             String[] splitedString = start.split(":");
             return splitedString[1].trim().replaceAll("\"", "");
+        }
+
+        private String extract_cur_attendance(String start){
+            String[] splitedString = start.split(":");
+            if (splitedString[1].indexOf(',') == -1){
+                return String.valueOf(1);
+            }else{
+                String[] userList = splitedString[1].split(",");
+                int size = userList.length;
+                return String.valueOf(size);
+            }
+
         }
 
         private String extract_time(String start) {
