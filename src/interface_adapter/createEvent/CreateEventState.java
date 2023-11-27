@@ -9,9 +9,7 @@ public class CreateEventState {
     private String username = "";
     private String place = "";
     private LocalDate date = LocalDate.now();
-    private LocalDate endDate = LocalDate.now();
     private LocalTime time = LocalTime.now();
-    private LocalTime endTime = LocalTime.now();
     private String lvl = "";
     private int maxplayers=0;
     private String sporttype = "";
@@ -22,9 +20,7 @@ public class CreateEventState {
         username = copy.username;
         place = copy.place;
         date = copy.date;
-        endDate = copy.endDate;
         time = copy.time;
-        endTime = copy.endTime;
         lvl = copy.lvl;
         maxplayers = copy.maxplayers;
         sporttype = copy.sporttype;
@@ -89,11 +85,4 @@ public class CreateEventState {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public LocalDate getEndDate() {return endDate;}
-    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
-
-    public LocalTime getEndTime() {return endTime;}
-    public void setEndTime(LocalTime endTime) { this.endTime = endTime; }
 }
-

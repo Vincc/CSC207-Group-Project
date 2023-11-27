@@ -6,11 +6,11 @@ import entity.CommonSportsEventFactory;
 import entity.CommonUserFactory;
 import interface_adapter.cancel.CancelViewModel;
 import interface_adapter.createEvent.CreateEventViewModel;
+import interface_adapter.createProfile.CreateProfileViewModel;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.signup.SignupViewModel;
 import interface_adapter.ViewManagerModel;
-import use_case.login.LoginUserDataAccessInterface;
 import view.*;
 
 import javax.swing.*;
@@ -45,6 +45,7 @@ public class Main {
         SignupViewModel signupViewModel = new SignupViewModel();
         CreateEventViewModel createEventViewModel = new CreateEventViewModel();
         CancelViewModel cancelViewModel = new CancelViewModel();
+        CreateProfileViewModel createProfileViewModel = new CreateProfileViewModel();
 
         FileUserDataAccessObject userDataAccessObject;
         try {
@@ -66,8 +67,11 @@ public class Main {
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject, cancelViewModel);
         views.add(loginView, loginView.viewName);
 
-        LoggedInView loggedInView = LoggedInUseCaseFactory.create(viewManagerModel,loggedInViewModel, createEventViewModel,userDataAccessObject,cancelViewModel);
+        LoggedInView loggedInView = LoggedInUseCaseFactory.create(viewManagerModel,loggedInViewModel, createEventViewModel,userDataAccessObject,cancelViewModel,createProfileViewModel);
         views.add(loggedInView, loggedInView.viewName);
+
+        CreateProfileView createProfileView = new CreateProfileView(createProfileViewModel);
+        views.add(createProfileView, createProfileView.viewName);
 
         CancelView cancelView = new CancelView(cancelViewModel);
         views.add(cancelView,cancelView.viewName);

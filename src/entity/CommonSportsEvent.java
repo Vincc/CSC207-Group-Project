@@ -27,7 +27,7 @@ public class CommonSportsEvent implements SportsEvent {
 
     private LocalTime eventEndTime;
 
-    public CommonSportsEvent(String organizer, String eventName, LocalDate eventDate, LocalDate eventEndDate, LocalTime eventTime, LocalTime eventEndTime, String eventLocation, int maxAttendance, String lvlOfPlay) {
+    public CommonSportsEvent(String organizer, String eventName, LocalDate eventDate, LocalTime eventTime, String eventLocation, int maxAttendance, String lvlOfPlay) {
         this.organizer = organizer;
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -38,8 +38,8 @@ public class CommonSportsEvent implements SportsEvent {
         this.attendance = new ArrayList<>();
         this.eventDescription = "";
         //change
-        this.eventEndDate = eventEndDate;
-        this.eventEndTime = eventEndTime;
+        this.eventEndDate = LocalDate.now();
+        this.eventEndTime = LocalTime.now();
     }
 
 
