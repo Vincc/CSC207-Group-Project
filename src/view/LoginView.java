@@ -36,8 +36,6 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         this.loginViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Login Screen");
-        title.setFont(new Font("Arial", Font.BOLD, 24));
-        title.setForeground(new Color(41, 128, 185));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelTextPanel usernameInfo = new LabelTextPanel(
@@ -46,16 +44,9 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
                 new JLabel("Password"), passwordInputField);
 
         JPanel buttons = new JPanel();
-        buttons.setBackground(new Color(200, 200, 200));
         logIn = new JButton(loginViewModel.LOGIN_BUTTON_LABEL);
-        logIn.setBackground(new Color(39, 174, 96));
-        logIn.setForeground(Color.WHITE);
-        logIn.setFont(new Font("Arial", Font.PLAIN, 16));
         buttons.add(logIn);
         cancel = new JButton(loginViewModel.CANCEL_BUTTON_LABEL);
-        cancel.setBackground(Color.RED);
-        cancel.setForeground(Color.WHITE);
-        cancel.setFont(new Font("Arial", Font.PLAIN, 16));
         buttons.add(cancel);
 
         logIn.addActionListener(                // This creates an anonymous subclass of ActionListener and instantiates it.

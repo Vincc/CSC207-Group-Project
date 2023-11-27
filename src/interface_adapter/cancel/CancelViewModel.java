@@ -9,6 +9,7 @@ import java.beans.PropertyChangeSupport;
 public class CancelViewModel extends ViewModel {
     private CancelState state = new CancelState();
 
+
     public CancelViewModel() {super("cancelView");}
 
 
