@@ -4,269 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="modify FileEventDataAccessObject FileUserDataAccessObject and entities.">
+    <list default="true" id="0ff4a2c2-c8c7-4ccf-8e71-b44b2273691a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoggedInView$EventListCellRenderer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileEventDataAccessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileEventDataAccessObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEventFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEventFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEventFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEventFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/interface_adapter/createEvent/CreateEventState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/makeEvent/makeEventInputData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/makeEvent/makeEventInputData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/makeEvent/makeEventInteractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/use_case/makeEvent/makeEventInteractor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/CreateEventView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/GoogleCalendarApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/GoogleCalendarApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/GoogleCalendarApiDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/GoogleCalendarApiDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEventFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/SportsEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SportsEventFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEvent/CreateEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEvent/CreateEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interface_adapter/createEvent/CreateEventState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interface_adapter/createEvent/CreateEventState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/makeEvent/makeEventInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/makeEvent/makeEventInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/use_case/makeEvent/makeEventInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/use_case/makeEvent/makeEventInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/CreateEventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CreateEventView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/GoogleCalendarApiDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/GoogleCalendarApiDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoggedInView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoggedInView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoggedInView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="tries" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-    &quot;associatedIndex&quot;: 6
-    }</component>
-  <component name="ProjectId" id="2WdHSWE41aMBXO4nPElLfFxOEUE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "b4",
-    "last_opened_file_path": "C:/Users/chang/IdeaProjects/CSC207-Group-Project/lib/LGoodDatePicker-11.2.1.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+    "git-widget-placeholder": "Merging b4"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/entity" />
-      <recent name="$PROJECT_DIR$/src/data_access" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="C:\Users\chang\IdeaProjects\CSC207-Group-Project\lib" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="app.Main" />
-      <module name="CSC207-Group-Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="" />
-      <created>1697055536438</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1697055536438</updated>
-      <workItem from="1697055537545" duration="1642000" />
-      <workItem from="1697825894204" duration="4268000" />
-      <workItem from="1697993123921" duration="35000" />
-      <workItem from="1697993172118" duration="169000" />
-      <workItem from="1697993357242" duration="180000" />
-      <workItem from="1697993724056" duration="1217000" />
-      <workItem from="1698097310358" duration="1012000" />
-      <workItem from="1698155759145" duration="29000" />
-      <workItem from="1698156347693" duration="5068000" />
-      <workItem from="1698245710284" duration="669000" />
-      <workItem from="1698258903947" duration="13000" />
-      <workItem from="1698936760056" duration="1026000" />
-      <workItem from="1698948842541" duration="12194000" />
-      <workItem from="1699047199027" duration="36000" />
-      <workItem from="1699047249963" duration="24000" />
-      <workItem from="1699047287688" duration="1763000" />
-      <workItem from="1699316725174" duration="2039000" />
-      <workItem from="1699321925922" duration="13000" />
-      <workItem from="1699321959517" duration="17727000" />
-      <workItem from="1699408456371" duration="1000" />
-      <workItem from="1699408464619" duration="811000" />
-      <workItem from="1700519767389" duration="14861000" />
-      <workItem from="1700546843470" duration="1845000" />
-    </task>
-    <task id="LOCAL-00001" summary="first use case interactor">
-      <option name="closed" value="true" />
-      <created>1698414849645</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1698414849645</updated>
-    </task>
-    <task id="LOCAL-00002" summary="1">
-      <option name="closed" value="true" />
-      <created>1699047335041</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1699047335041</updated>
-    </task>
-    <task id="LOCAL-00003" summary="2">
-      <option name="closed" value="true" />
-      <created>1699048718456</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1699048718456</updated>
-    </task>
-    <task id="LOCAL-00004" summary="save user using json file">
-      <option name="closed" value="true" />
-      <created>1699329613183</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1699329613183</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fixed bug for FileUserDataAccessObject">
-      <option name="closed" value="true" />
-      <created>1699331251682</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1699331251682</updated>
-    </task>
-    <task id="LOCAL-00006" summary="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject">
-      <option name="closed" value="true" />
-      <created>1699393317683</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1699393317683</updated>
-    </task>
-    <task id="LOCAL-00007" summary="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject v2">
-      <option name="closed" value="true" />
-      <created>1699400280580</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1699400280580</updated>
-    </task>
-    <task id="LOCAL-00008" summary="modify FileEventDataAccessObject FileUserDataAccessObject and entities.">
-      <option name="closed" value="true" />
-      <created>1699408989851</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1699408989851</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="branch7" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="first use case interactor" />
-    <MESSAGE value="1" />
-    <MESSAGE value="2" />
-    <MESSAGE value="save user using json file" />
-    <MESSAGE value="fixed bug for FileUserDataAccessObject" />
-    <MESSAGE value="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject" />
-    <MESSAGE value="rewrite FileEventDataAccessObject and entities,fixed another bug for FileUserDataAccessObject v2" />
-    <MESSAGE value="modify FileEventDataAccessObject FileUserDataAccessObject and entities." />
-    <option name="LAST_COMMIT_MESSAGE" value="modify FileEventDataAccessObject FileUserDataAccessObject and entities." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.time.temporal.UnsupportedTemporalTypeException" package="java.time.temporal" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
