@@ -19,7 +19,7 @@ public class makeEventInteractor implements makeEventInputBoundary{
         if (eventDataAccessObject.existsByName(makeEventInputData.getEventName())) {
             createEventPresenter.prepareMakeEventFailView("Event already exists.");
         } else {
-            SportsEvent event = sportsEventFactory.create(makeEventInputData.getEventName(), makeEventInputData.getEventDate(), makeEventInputData.getEventTime(), makeEventInputData.getEventLabel(), makeEventInputData.getEventMaxAttendance(), makeEventInputData.getEventLevel(), makeEventInputData.getLocation());
+            SportsEvent event = sportsEventFactory.create(makeEventInputData.getEventName(), makeEventInputData.getEventDate(), makeEventInputData.getEventEndDate(), makeEventInputData.getEventTime(), makeEventInputData.getEventEndTime(), makeEventInputData.getOrganiserName(), makeEventInputData.getEventMaxAttendance(), makeEventInputData.getEventLevel(), makeEventInputData.getLocation());
             eventDataAccessObject.save(event);
 
             createEventPresenter.prepareMakeEventSuccessView();

@@ -37,6 +37,9 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
     final DatePicker eventDateInputField = new DatePicker();
 
     final TimePicker eventTimeInputField = new TimePicker();
+    final DatePicker eventEndDateInputField = new DatePicker();
+
+    final TimePicker eventEndTimeInputField = new TimePicker();
     final JTextField eventNameInputField = new JTextField(15);
     final JTextField eventAttendanceInputField = new JTextField(15);
     final JButton create;
@@ -48,12 +51,17 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
         this.createEventViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Create your event, my friend");
+        CreateEventState currentState = createEventViewModel.getState();
         username = new JLabel();
+
+
         username.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelTextPanel eventNameInfo = new LabelTextPanel(
                 new JLabel("Event Name"), eventNameInputField);
+
+
 
 
         LabelTextPanel eventPlaceInfo = new LabelTextPanel(
@@ -81,10 +89,13 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                             CreateEventState currentState = createEventViewModel.getState();
 
                             createEventController.executeMakeEvent(
+                                    currentState.getUsername(),
                                     currentState.getDiscription(),
                                     currentState.getPlace(),
                                     currentState.getDate(),
+                                    currentState.getEndDate(),
                                     currentState.getTime(),
+                                    currentState.getEndTime(),
                                     currentState.getSporttype(),
                                     currentState.getLvl(),
                                     currentState.getMaxplayers()
@@ -103,6 +114,16 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                         createEventViewModel.setState(currentState);
                     }
                 });
+        eventEndDateInputField.addDateChangeListener(
+                new DateChangeListener() {
+                    @Override
+                    public void dateChanged(DateChangeEvent dateChangeEvent) {
+                        CreateEventState currentState = createEventViewModel.getState();
+                        LocalDate date = eventEndDateInputField.getDate();
+                        currentState.setEndDate(date);
+                        createEventViewModel.setState(currentState);
+                    }
+                });
         eventTimeInputField.addTimeChangeListener(
                 new TimeChangeListener() {
                     @Override
@@ -110,6 +131,16 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                         CreateEventState currentState = createEventViewModel.getState();
                         LocalTime time = eventTimeInputField.getTime();
                         currentState.setTime(time);
+                        createEventViewModel.setState(currentState);
+                    }
+                });
+        eventEndTimeInputField.addTimeChangeListener(
+                new TimeChangeListener() {
+                    @Override
+                    public void timeChanged(TimeChangeEvent timeChangeEvent) {
+                        CreateEventState currentState = createEventViewModel.getState();
+                        LocalTime time = eventEndTimeInputField.getTime();
+                        currentState.setEndTime(time);
                         createEventViewModel.setState(currentState);
                     }
                 });
@@ -183,8 +214,11 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
 
         this.add(title);
         this.add(username);
+
         this.add(eventDateInputField);
+        this.add(eventEndDateInputField);
         this.add(eventTimeInputField);
+        this.add(eventEndTimeInputField);
         this.add(eventNameInfo);
         this.add(eventPlaceInfo);
         this.add(eventAttendanceInfo);
