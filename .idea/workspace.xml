@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f6fa5909-4ce8-4bab-8bc3-ae6b644a63b7" name="Changes" comment="modify FileEventDataAccessObject FileUserDataAccessObject and entities.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileEventDataAccessObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/data_access/FileEventDataAccessObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/CommonSportsEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/entity/SportsEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_access/FileEventDataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/CommonSportsEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/CommonSportsEventFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/SportsEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/SportsEventFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoggedInView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CSC207-Group-Project/view/LoggedInView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoggedInView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,27 +43,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "b4",
-    "last_opened_file_path": "C:/Users/chang/IdeaProjects/CSC207-Group-Project/lib/LGoodDatePicker-11.2.1.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;newbranch&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/chang/IdeaProjects/CSC207-Group-Project/lib/LGoodDatePicker-11.2.1.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/entity" />
@@ -132,6 +126,7 @@
       <workItem from="1699408464619" duration="811000" />
       <workItem from="1700519767389" duration="14861000" />
       <workItem from="1700546843470" duration="1845000" />
+      <workItem from="1701040360928" duration="3986000" />
     </task>
     <task id="LOCAL-00001" summary="first use case interactor">
       <option name="closed" value="true" />
