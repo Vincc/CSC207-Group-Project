@@ -1,4 +1,5 @@
 package view;
+
 import interface_adapter.logged_in.LoggedInController;
 import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
@@ -8,13 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.FileReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoggedInView extends JPanel implements PropertyChangeListener {
 
@@ -144,11 +143,12 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         }
     }
 
-    private static class EventListCellRenderer extends JPanel implements ListCellRenderer<String> {
+    private class EventListCellRenderer extends JPanel implements ListCellRenderer<String> {
         private JLabel eventNameLabel;
         private JLabel descriptionLabel;
         private JLabel organizerLabel;
         private JLabel detailsLabel;
+        private JButton eventButton;  // New button for each event
 
         public EventListCellRenderer() {
             setLayout(new BorderLayout());
@@ -160,15 +160,19 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             descriptionLabel = new JLabel();
             organizerLabel = new JLabel();
             detailsLabel = new JLabel();
-            add(eventNameLabel, BorderLayout.NORTH);
-            add(descriptionLabel, BorderLayout.CENTER);
-            add(organizerLabel, BorderLayout.SOUTH);
-            add(detailsLabel, BorderLayout.EAST);
+            eventButton = new JButton("Join Event");  // Button text can be customized
+            eventButton.addActionListener(e -> handleJoinEvent());  // Add ActionListener for the button
+            JPanel eventInfoPanel = new JPanel(new BorderLayout());
+            eventInfoPanel.add(eventNameLabel, BorderLayout.NORTH);
+            eventInfoPanel.add(descriptionLabel, BorderLayout.CENTER);
+            eventInfoPanel.add(organizerLabel, BorderLayout.SOUTH);
+            eventInfoPanel.add(detailsLabel, BorderLayout.EAST);
+            add(eventInfoPanel, BorderLayout.CENTER);
+            add(eventButton, BorderLayout.EAST);
         }
 
         public Component getListCellRendererComponent(JList<? extends String> list, String value, int index,
                                                       boolean isSelected, boolean cellHasFocus) {
-
             // Format event information
             String[] eventInfo = value.split(",");
             if (eventInfo.length >= 7) {
@@ -179,7 +183,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
                 String eventDate = extract_string(eventInfo[5]);
                 String levelOfPlay = extract_string(eventInfo[2]);
                 String eventLocation = extract_string(eventInfo[8]);
-                String maxAttendance =  extract_string(eventInfo[7]);
+                String maxAttendance = extract_string(eventInfo[7]);
                 String curAttendance = extract_string(eventInfo[9]);
 
                 eventNameLabel.setText("<html><div style='text-align: center;'><b style='font-size: 20px; color: #3498db;'>" + eventName +
@@ -206,32 +210,20 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             return this;
         }
 
+        private void handleJoinEvent() {
+            // Handle the button click action (e.g., join the event)
+            // You can access the information of the corresponding event and perform actions accordingly
+            // For example, get the event ID and send a request to join the event
+        }
+
         private String extract_string(String start) {
             String[] splitedString = start.split(":");
             return splitedString[1].trim().replaceAll("\"", "");
         }
-        private String extract_attendance_length(String start) {
-            String[] splitedString = start.split(":");
-            String attendanceList = splitedString[9].trim().replaceAll("\"", "");
-
-            // Check if attendance list is empty
-            if (attendanceList.equals("[]")) {
-                return "0";
-            }
-
-            // Remove brackets from the attendance list
-            attendanceList = attendanceList.substring(1, attendanceList.length() - 1);
-
-            // Split the attendance list by commas and count the elements
-            String[] attendees = attendanceList.split(",");
-            return String.valueOf(attendees.length);
-        }
-
 
         private String extract_time(String start) {
             String[] splitedString = start.split(":");
             return splitedString[1].trim() + ":" + splitedString[2].trim().replaceAll("\"", "");
         }
     }
-
 }
