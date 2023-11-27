@@ -27,6 +27,8 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
     private JButton createEventButton;
     private JList<String> eventsList;
 
+    private JButton userProfileButton;
+
     public LoggedInView(LoggedInViewModel loggedInViewModel, LoggedInController controller) {
         this.loggedInViewModel = loggedInViewModel;
         this.loggedInViewModel.addPropertyChangeListener(this);
@@ -66,12 +68,17 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         logOutButton = new JButton("Log Out");
         logOutButton.setBackground(new Color(192, 57, 43)); // Red color
         logOutButton.setForeground(Color.WHITE);
+        userProfileButton = new JButton("User Profile");
+        userProfileButton.setBackground(new Color(60, 76, 231)); // Set button background color
+        userProfileButton.setForeground(Color.WHITE); // Set button text color
+        buttonPanel.add(userProfileButton);
         buttonPanel.add(createEventButton);
         buttonPanel.add(logOutButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
         createEventButton.addActionListener(e -> handleCreateEvent());
         logOutButton.addActionListener(e -> handleLogOut());
+        userProfileButton.addActionListener(e -> handleCreateProfile());
 
         // Load and display existing events
         updateEventsList();
@@ -95,6 +102,12 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         // Update events list after logging out
         updateEventsList();
     }
+
+    private void handleCreateProfile() {
+        LoggedInState loggedInState = loggedInViewModel.getState();
+        loggedInController.executeCreateProfile(loggedInState.getUsername());
+    }
+
 
     private void updateUsernameLabel() {
         LoggedInState state = loggedInViewModel.getState();
