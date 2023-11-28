@@ -7,6 +7,7 @@ import interface_adapter.logged_in.LoggedInViewModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
@@ -52,7 +53,6 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         centerPanel.add(usernameLabel);
         add(centerPanel, BorderLayout.WEST); // Change to BorderLayout.WEST
 
-        // Event list with scroll pane
         eventsList = new JList<>();
         eventsList.setCellRenderer(new EventListCellRenderer());
         JScrollPane scrollPane = new JScrollPane(eventsList);
@@ -78,6 +78,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         createEventButton.addActionListener(e -> handleCreateEvent());
         logOutButton.addActionListener(e -> handleLogOut());
         userProfileButton.addActionListener(e -> handleCreateProfile());
+
 
         // Load and display existing events
         updateEventsList();
@@ -168,13 +169,23 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             setOpaque(true);
             setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY)); // Add border between items
             setBackground(Color.WHITE);
-            setPreferredSize(new Dimension(0, 80)); // Set a fixed height for each item
+            setPreferredSize(new Dimension(0, 80));
             eventNameLabel = new JLabel();
             descriptionLabel = new JLabel();
             organizerLabel = new JLabel();
             detailsLabel = new JLabel();
-            eventButton = new JButton("Join Event");  // Button text can be customized
-            eventButton.addActionListener(e -> handleJoinEvent());  // Add ActionListener for the button
+
+            eventButton = new JButton("Join Event");
+            eventButton.addActionListener(
+                    new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            if (e.getSource().equals(eventButton)){
+                                loggedInController.addParticipants(eventNameLabel.getText(), usernameLabel.getText());
+                            }
+                        }
+                    }
+            );
             JPanel eventInfoPanel = new JPanel(new BorderLayout());
             eventInfoPanel.add(eventNameLabel, BorderLayout.NORTH);
             eventInfoPanel.add(descriptionLabel, BorderLayout.CENTER);
@@ -197,7 +208,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
                 String levelOfPlay = extract_string(eventInfo[2]);
                 String eventLocation = extract_string(eventInfo[8]);
                 String maxAttendance = extract_string(eventInfo[7]);
-                String curAttendance = extract_string(eventInfo[9]);
+                String curAttendance = extract_cur_attendance(eventInfo[9]);
 
                 eventNameLabel.setText("<html><div style='text-align: center;'><b style='font-size: 20px; color: #3498db;'>" + eventName +
                         "</b></div></html>");
@@ -223,15 +234,22 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             return this;
         }
 
-        private void handleJoinEvent() {
-            // Handle the button click action (e.g., join the event)
-            // You can access the information of the corresponding event and perform actions accordingly
-            // For example, get the event ID and send a request to join the event
-        }
 
         private String extract_string(String start) {
             String[] splitedString = start.split(":");
             return splitedString[1].trim().replaceAll("\"", "");
+        }
+
+        private String extract_cur_attendance(String start){
+            String[] splitedString = start.split(":");
+            if (splitedString[1].indexOf(',') == -1){
+                return String.valueOf(1);
+            }else{
+                String[] userList = splitedString[1].split(",");
+                int size = userList.length;
+                return String.valueOf(size);
+            }
+
         }
 
         private String extract_time(String start) {

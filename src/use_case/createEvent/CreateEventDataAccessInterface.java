@@ -5,8 +5,6 @@ import entity.User;
 
 public interface CreateEventDataAccessInterface {
 
-    boolean eventExists(String name);
-
-    void save(SportsEvent sportsEvent);
+    void updateDatabase();
 
 }
