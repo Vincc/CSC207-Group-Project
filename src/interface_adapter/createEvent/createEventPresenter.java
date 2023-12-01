@@ -10,7 +10,7 @@ import use_case.makeEvent.makeEventOutputData;
 
 import javax.swing.text.View;
 
-public class createEventPresenter implements makeEventOutputBoundary{
+public class  createEventPresenter implements makeEventOutputBoundary{
     private final LoggedInViewModel loggedInViewModel;
     private ViewManagerModel viewManagerModel;
     public createEventPresenter(ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel){

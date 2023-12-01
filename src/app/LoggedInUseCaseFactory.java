@@ -21,12 +21,10 @@ import use_case.CreateProfile.CreateProfileOutputBoundary;
 import use_case.cancel.CancelInputBoundary;
 import use_case.cancel.CancelInteractor;
 import use_case.cancel.CancelOutputBoundary;
-import use_case.joinEvent.joinEventOutputBoundary;
 import use_case.joinEvent.joinEventInputBoundary;
 import use_case.joinEvent.joinEventInteractor;
-import use_case.joinEvent.joinEventOutputData;
+import use_case.joinEvent.joinEventOutputBoundary;
 import view.LoggedInView;
-import use_case.joinEvent.joinEventDataAccessInterface;
 
 public class LoggedInUseCaseFactory {
     private LoggedInUseCaseFactory(){
@@ -52,9 +50,12 @@ public class LoggedInUseCaseFactory {
         CancelOutputBoundary cancelOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);
         CancelInputBoundary cancelInputBoundary = new CancelInteractor(cancelOutputBoundary,userDataAccessObject);
 
+        joinEventOutputBoundary joinEventOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);
+        joinEventInputBoundary joinEventUseCaseInteractor = new joinEventInteractor(fileEventDataAccessObject, joinEventOutputBoundary);
+
+
         CreateProfileInputBoundary createProfileInputBoundary = new CreateProfileInteractor(createProfileOutputBoundary, userDataAccessObject);
 
-        joinEventInputBoundary joinEventUseCaseInteractor = new joinEventInteractor(fileEventDataAccessObject);
 
 
         return new LoggedInController(createEventInteractor, joinEventUseCaseInteractor, cancelInputBoundary, createProfileInputBoundary);
