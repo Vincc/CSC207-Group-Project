@@ -72,7 +72,7 @@ public class Main {
         CancelView cancelView = new CancelView(cancelViewModel);
         views.add(cancelView,cancelView.viewName);
 
-        CreateEventView createEventView = createEventUseCaseFactory.create(viewManagerModel, loggedInViewModel, createEventViewModel, eventDataAccessObject);
+        CreateEventView createEventView = createEventUseCaseFactory.create(viewManagerModel, loggedInViewModel, createEventViewModel, eventDataAccessObject, application);
         views.add(createEventView, createEventView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
