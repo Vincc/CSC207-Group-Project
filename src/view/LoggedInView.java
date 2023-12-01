@@ -30,6 +30,9 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
     private JList<String> eventsList;
 
 
+    private JButton userProfileButton;
+
+
     public LoggedInView(LoggedInViewModel loggedInViewModel, LoggedInController controller) {
         this.loggedInViewModel = loggedInViewModel;
         this.loggedInViewModel.addPropertyChangeListener(this);
@@ -65,6 +68,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         logOutButton.setBackground(new Color(192, 57, 43));
         logOutButton.setForeground(Color.WHITE);
 
+
         JPanel joinEventPanel = new JPanel();
 
         String[] comboBoxItems = extract_event_name();
@@ -77,6 +81,11 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         joinEventPanel.add(joinEventButton);
         add(joinEventPanel,BorderLayout.EAST);
 
+        userProfileButton = new JButton("User Profile");
+        userProfileButton.setBackground(new Color(60, 76, 231)); // Set button background color
+        userProfileButton.setForeground(Color.WHITE); // Set button text color
+        buttonPanel.add(userProfileButton);
+
         buttonPanel.add(createEventButton);
         buttonPanel.add(logOutButton);
         add(buttonPanel, BorderLayout.SOUTH);
@@ -85,6 +94,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
 
         createEventButton.addActionListener(e -> handleCreateEvent());
         logOutButton.addActionListener(e -> handleLogOut());
+
         joinEventButton.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
@@ -97,6 +107,9 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
                     }
                 }
         );
+
+        userProfileButton.addActionListener(e -> handleCreateProfile());
+
 
         updateEventsList();
         updateUsernameLabel();
@@ -113,6 +126,12 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         loggedInController.executeCancel(loggedInState.getUsername());
         updateEventsList();
     }
+
+    private void handleCreateProfile() {
+        LoggedInState loggedInState = loggedInViewModel.getState();
+        loggedInController.executeCreateProfile(loggedInState.getUsername());
+    }
+
 
     private void updateUsernameLabel() {
         LoggedInState state = loggedInViewModel.getState();
@@ -153,7 +172,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             StringBuilder jsonContent = new StringBuilder();
             String line;
 
-            while ((line = reader.readLine()) != null) {
+            while((line = reader.readLine()) != null) {
                 jsonContent.append(line);
             }
             String jsonArrayString = jsonContent.toString().trim();
