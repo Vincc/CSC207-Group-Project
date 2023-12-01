@@ -4,17 +4,18 @@ import com.github.lgooddatepicker.optionalusertools.DateChangeListener;
 import com.github.lgooddatepicker.optionalusertools.TimeChangeListener;
 import com.github.lgooddatepicker.zinternaltools.DateChangeEvent;
 import com.github.lgooddatepicker.zinternaltools.TimeChangeEvent;
+import com.opencagedata.jopencage.JOpenCageGeocoder;
+import com.opencagedata.jopencage.model.JOpenCageForwardRequest;
+import com.opencagedata.jopencage.model.JOpenCageResponse;
+import com.opencagedata.jopencage.model.JOpenCageResult;
 import interface_adapter.createEvent.CreateEventViewModel;
 import interface_adapter.createEvent.CreateEventState;
-import interface_adapter.login.LoginState;
 import interface_adapter.createEvent.CreateEventController;
 
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.TimePicker;
-import interface_adapter.signup.SignupState;
 
 import javax.swing.*;
-import javax.swing.text.LabelView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,11 +25,13 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import interface_adapter.AutoSuggestor;
 
 public class CreateEventView extends JPanel implements ActionListener, PropertyChangeListener {
 
     JLabel username;
-
+    Window container;
 
     public final String viewName = "createEventView";
     private final CreateEventViewModel createEventViewModel;
@@ -45,10 +48,11 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
     final JButton create;
     final JButton cancel;
     final JComboBox<String> eventLevelComboBox; // JComboBox for event level
-    public CreateEventView(CreateEventViewModel createEventViewModel, CreateEventController createEventController) {
+    public CreateEventView(CreateEventViewModel createEventViewModel, CreateEventController createEventController, Window mainWindow) {
         this.createEventController = createEventController;
         this.createEventViewModel = createEventViewModel;
         this.createEventViewModel.addPropertyChangeListener(this);
+        this.container = mainWindow;
 
         JLabel title = new JLabel("Create your event, my friend");
         CreateEventState currentState = createEventViewModel.getState();
@@ -168,6 +172,23 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                     public void keyTyped(KeyEvent e) {
                         CreateEventState currentState = createEventViewModel.getState();
                         String text = eventPlaceInputField.getText() + e.getKeyChar();
+                        AutoSuggestor autoSuggestor = new AutoSuggestor(eventPlaceInputField, container, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 1.0f);
+                        ArrayList<String> words = new ArrayList<>();
+                        if (text.length() > 5) {
+                            JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("60cdd0cbd0ff48ad84bcdd75f39d7c01");
+                            JOpenCageForwardRequest request = new JOpenCageForwardRequest(text);
+                            request.setRestrictToCountryCode("ca");
+                            // request.setBounds(-79.0, 43.0, -80.0, 44.0);
+
+                            JOpenCageResponse response = jOpenCageGeocoder.forward(request);
+                            while (words.size() < 5) {
+                                for (JOpenCageResult i : response.getResults()) {
+                                    words.add(i.getFormatted());
+                                }
+                            }
+                            autoSuggestor.setDictionary(words);
+                            autoSuggestor.wordTyped(text);
+                        }
                         currentState.setPlace(text);
                         createEventViewModel.setState(currentState);
                     }
