@@ -1,4 +1,5 @@
 package view;
+
 import interface_adapter.logged_in.LoggedInController;
 import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
@@ -6,15 +7,14 @@ import interface_adapter.logged_in.LoggedInViewModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.FileReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.io.IOException;
-import java.util.List;
-import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoggedInView extends JPanel implements PropertyChangeListener {
 
@@ -26,6 +26,8 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
     private JButton logOutButton;
     private JButton createEventButton;
     private JList<String> eventsList;
+
+    private JButton userProfileButton;
 
     public LoggedInView(LoggedInViewModel loggedInViewModel, LoggedInController controller) {
         this.loggedInViewModel = loggedInViewModel;
@@ -51,7 +53,6 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         centerPanel.add(usernameLabel);
         add(centerPanel, BorderLayout.WEST); // Change to BorderLayout.WEST
 
-        // Event list with scroll pane
         eventsList = new JList<>();
         eventsList.setCellRenderer(new EventListCellRenderer());
         JScrollPane scrollPane = new JScrollPane(eventsList);
@@ -66,12 +67,18 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         logOutButton = new JButton("Log Out");
         logOutButton.setBackground(new Color(192, 57, 43)); // Red color
         logOutButton.setForeground(Color.WHITE);
+        userProfileButton = new JButton("User Profile");
+        userProfileButton.setBackground(new Color(60, 76, 231)); // Set button background color
+        userProfileButton.setForeground(Color.WHITE); // Set button text color
+        buttonPanel.add(userProfileButton);
         buttonPanel.add(createEventButton);
         buttonPanel.add(logOutButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
         createEventButton.addActionListener(e -> handleCreateEvent());
         logOutButton.addActionListener(e -> handleLogOut());
+        userProfileButton.addActionListener(e -> handleCreateProfile());
+
 
         // Load and display existing events
         updateEventsList();
@@ -95,6 +102,12 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         // Update events list after logging out
         updateEventsList();
     }
+
+    private void handleCreateProfile() {
+        LoggedInState loggedInState = loggedInViewModel.getState();
+        loggedInController.executeCreateProfile(loggedInState.getUsername());
+    }
+
 
     private void updateUsernameLabel() {
         LoggedInState state = loggedInViewModel.getState();
@@ -144,31 +157,46 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         }
     }
 
-    private static class EventListCellRenderer extends JPanel implements ListCellRenderer<String> {
+    private class EventListCellRenderer extends JPanel implements ListCellRenderer<String> {
         private JLabel eventNameLabel;
         private JLabel descriptionLabel;
         private JLabel organizerLabel;
         private JLabel detailsLabel;
+        private JButton eventButton;  // New button for each event
 
         public EventListCellRenderer() {
             setLayout(new BorderLayout());
             setOpaque(true);
             setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY)); // Add border between items
             setBackground(Color.WHITE);
-            setPreferredSize(new Dimension(0, 80)); // Set a fixed height for each item
+            setPreferredSize(new Dimension(0, 80));
             eventNameLabel = new JLabel();
             descriptionLabel = new JLabel();
             organizerLabel = new JLabel();
             detailsLabel = new JLabel();
-            add(eventNameLabel, BorderLayout.NORTH);
-            add(descriptionLabel, BorderLayout.CENTER);
-            add(organizerLabel, BorderLayout.SOUTH);
-            add(detailsLabel, BorderLayout.EAST);
+
+            eventButton = new JButton("Join Event");
+            eventButton.addActionListener(
+                    new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            if (e.getSource().equals(eventButton)){
+                                loggedInController.addParticipants(eventNameLabel.getText(), usernameLabel.getText());
+                            }
+                        }
+                    }
+            );
+            JPanel eventInfoPanel = new JPanel(new BorderLayout());
+            eventInfoPanel.add(eventNameLabel, BorderLayout.NORTH);
+            eventInfoPanel.add(descriptionLabel, BorderLayout.CENTER);
+            eventInfoPanel.add(organizerLabel, BorderLayout.SOUTH);
+            eventInfoPanel.add(detailsLabel, BorderLayout.EAST);
+            add(eventInfoPanel, BorderLayout.CENTER);
+            add(eventButton, BorderLayout.EAST);
         }
 
         public Component getListCellRendererComponent(JList<? extends String> list, String value, int index,
                                                       boolean isSelected, boolean cellHasFocus) {
-
             // Format event information
             String[] eventInfo = value.split(",");
             if (eventInfo.length >= 7) {
@@ -179,8 +207,8 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
                 String eventDate = extract_string(eventInfo[5]);
                 String levelOfPlay = extract_string(eventInfo[2]);
                 String eventLocation = extract_string(eventInfo[8]);
-                String maxAttendance =  extract_string(eventInfo[7]);
-                String curAttendance = extract_string(eventInfo[9]);
+                String maxAttendance = extract_string(eventInfo[7]);
+                String curAttendance = extract_cur_attendance(eventInfo[9]);
 
                 eventNameLabel.setText("<html><div style='text-align: center;'><b style='font-size: 20px; color: #3498db;'>" + eventName +
                         "</b></div></html>");
@@ -206,32 +234,27 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             return this;
         }
 
+
         private String extract_string(String start) {
             String[] splitedString = start.split(":");
             return splitedString[1].trim().replaceAll("\"", "");
         }
-        private String extract_attendance_length(String start) {
-            String[] splitedString = start.split(":");
-            String attendanceList = splitedString[9].trim().replaceAll("\"", "");
 
-            // Check if attendance list is empty
-            if (attendanceList.equals("[]")) {
-                return "0";
+        private String extract_cur_attendance(String start){
+            String[] splitedString = start.split(":");
+            if (splitedString[1].indexOf(',') == -1){
+                return String.valueOf(1);
+            }else{
+                String[] userList = splitedString[1].split(",");
+                int size = userList.length;
+                return String.valueOf(size);
             }
 
-            // Remove brackets from the attendance list
-            attendanceList = attendanceList.substring(1, attendanceList.length() - 1);
-
-            // Split the attendance list by commas and count the elements
-            String[] attendees = attendanceList.split(",");
-            return String.valueOf(attendees.length);
         }
-
 
         private String extract_time(String start) {
             String[] splitedString = start.split(":");
             return splitedString[1].trim() + ":" + splitedString[2].trim().replaceAll("\"", "");
         }
     }
-
 }

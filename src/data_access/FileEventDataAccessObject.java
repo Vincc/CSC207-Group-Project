@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import use_case.makeEvent.makeEventDataAccessInterface;
+import use_case.joinEvent.joinEventDataAccessInterface;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -17,7 +18,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class FileEventDataAccessObject implements makeEventDataAccessInterface {
+public class FileEventDataAccessObject implements makeEventDataAccessInterface, joinEventDataAccessInterface {
 
 
     private final File jsonFileEvent;
@@ -72,7 +73,14 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface {
         this.save();
 
     }
+    public void addParticipant(String eventName, String username){
+        if (existsByName(eventName)) {
+            SportsEvent sportEvent = events.get(eventName);
+            sportEvent.getAttendance().add(username);
 
+            this.save();
+        }
+    }
     public void save() {
         try {
             FileWriter writer = new FileWriter(jsonFileEvent);
