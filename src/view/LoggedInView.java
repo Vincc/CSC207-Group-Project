@@ -152,12 +152,17 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
        toRet.add("Select Event");
         try {
             List<String> events = loadEventsFromJsonFile("events.json");
-            for (String i:events){
-                String[] infoForName = i.split("event name");
-                String[] finelInfoForName = infoForName[1].split(",");
-                String toList  = finelInfoForName[0].substring(3,finelInfoForName[0].length()-1 );
-                toRet.add(toList);
+            if (events.stream().allMatch(event -> event.equals("{}"))){
+                return toRet.toArray(new String[0]);
+            }
+            else{
+                for (String i:events){
+                    String[] infoForName = i.split("event name");
+                    String[] finelInfoForName = infoForName[1].split(",");
+                     String toList  = finelInfoForName[0].substring(3,finelInfoForName[0].length()-1 );
+                    toRet.add(toList);
 
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
