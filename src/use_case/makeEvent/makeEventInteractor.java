@@ -21,6 +21,7 @@ public class makeEventInteractor implements makeEventInputBoundary{
         } else {
             SportsEvent event = sportsEventFactory.create(makeEventInputData.getEventName(), makeEventInputData.getEventDate(), makeEventInputData.getEventEndDate(), makeEventInputData.getEventTime(), makeEventInputData.getEventEndTime(), makeEventInputData.getOrganiserName(), makeEventInputData.getEventMaxAttendance(), makeEventInputData.getEventLevel(), makeEventInputData.getLocation());
             eventDataAccessObject.save(event);
+            eventDataAccessObject.addParticipant(event.getName(), event.getOrganizer());
 
             createEventPresenter.prepareMakeEventSuccessView();
         }
