@@ -222,12 +222,13 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                             if (response.getResults().size() < 6) {
                                 for (JOpenCageResult re : response.getResults()) {
                                     words.add(re.getFormatted());
-                            }} else {
+                                }} else {
                                 for (JOpenCageResult re : response.getResults().subList(0, 5)) {
                                     words.add(re.getFormatted());
                                 }
                             }
-                        } else if (Objects.equals(eventPlaceInputField.getText(), "")){
+                        }
+                        if (Objects.equals(eventPlaceInputField.getText(), "\b")){
                             words.clear();
                         }
                         AutoSuggestor autoSuggestor = new AutoSuggestor(eventPlaceInputField, container, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 1.0f);
@@ -235,6 +236,9 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                         autoSuggestor.wordTyped(text);
                         currentState.setPlace(text);
                         createEventViewModel.setState(currentState);
+                        //JMenu menu = new JMenu();
+                        //JPanel panel = new JPanel();
+                        //menu.add(panel);
                     }
 
                     @Override
