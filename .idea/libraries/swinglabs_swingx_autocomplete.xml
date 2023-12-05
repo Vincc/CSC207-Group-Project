@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="swinglabs.swingx.autocomplete" type="repository">
+    <properties maven-id="org.swinglabs.swingx:swingx-autocomplete:1.6.5-1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/swinglabs/swingx/swingx-autocomplete/1.6.5-1/swingx-autocomplete-1.6.5-1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/swinglabs/swingx/swingx-common/1.6.5-1/swingx-common-1.6.5-1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
