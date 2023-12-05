@@ -68,17 +68,17 @@ public class Main {
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject, cancelViewModel);
         views.add(loginView, loginView.viewName);
 
-        LoggedInView loggedInView = LoggedInUseCaseFactory.create(viewManagerModel,loggedInViewModel, createEventViewModel,userDataAccessObject,eventDataAccessObject,cancelViewModel, createProfileViewModel);
+        LoggedInView loggedInView = LoggedInUseCaseFactory.create(viewManagerModel,loggedInViewModel, createEventViewModel,userDataAccessObject,eventDataAccessObject,cancelViewModel, createProfileViewModel,signupViewModel);
 
         views.add(loggedInView, loggedInView.viewName);
 
-        CreateProfileView createProfileView = new CreateProfileView(createProfileViewModel);
+        CreateProfileView createProfileView = CreateProfileUseCaseFactory.create(viewManagerModel,createProfileViewModel, loggedInViewModel, userDataAccessObject);
         views.add(createProfileView, createProfileView.viewName);
 
         CancelView cancelView = new CancelView(cancelViewModel);
         views.add(cancelView,cancelView.viewName);
 
-        CreateEventView createEventView = createEventUseCaseFactory.create(viewManagerModel, loggedInViewModel, createEventViewModel, eventDataAccessObject);
+        CreateEventView createEventView = createEventUseCaseFactory.create(viewManagerModel, loggedInViewModel, createEventViewModel, eventDataAccessObject, userDataAccessObject, application);
         views.add(createEventView, createEventView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);

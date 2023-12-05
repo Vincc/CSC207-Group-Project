@@ -1,0 +1,149 @@
+Index: CSC207-Group-Project.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"JAVA_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\n    <exclude-output />\n    <content url=\"file://$MODULE_DIR$\">\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\n    </content>\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n    <orderEntry type=\"library\" name=\"Java EE 6-Java EE 6\" level=\"project\" />\n    <orderEntry type=\"module-library\">\n      <library>\n        <CLASSES>\n          <root url=\"jar://$MODULE_DIR$/../json-simple-1.1.1.jar!/\" />\n        </CLASSES>\n        <JAVADOC />\n        <SOURCES />\n      </library>\n    </orderEntry>\n    <orderEntry type=\"module-library\">\n      <library>\n        <CLASSES>\n          <root url=\"jar://$MODULE_DIR$/lib/json-simple-1.1.1.jar!/\" />\n        </CLASSES>\n        <JAVADOC />\n        <SOURCES />\n      </library>\n    </orderEntry>\n    <orderEntry type=\"module-library\">\n      <library>\n        <CLASSES>\n          <root url=\"jar://$MODULE_DIR$/lib/LGoodDatePicker-11.2.1.jar!/\" />\n        </CLASSES>\n        <JAVADOC />\n        <SOURCES />\n      </library>\n    </orderEntry>\n    <orderEntry type=\"library\" name=\"google.api.client\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"google.oauth.client.jetty\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"google.apis.api.services.calendar\" level=\"project\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CSC207-Group-Project.iml b/CSC207-Group-Project.iml
+--- a/CSC207-Group-Project.iml	(revision c21c1715a5cd342b9babe06fed005310579c63f2)
++++ b/CSC207-Group-Project.iml	(date 1701119738505)
+@@ -38,5 +38,8 @@
+     <orderEntry type="library" name="google.api.client" level="project" />
+     <orderEntry type="library" name="google.oauth.client.jetty" level="project" />
+     <orderEntry type="library" name="google.apis.api.services.calendar" level="project" />
++    <orderEntry type="library" name="opencagedata.jopencage" level="project" />
++    <orderEntry type="library" name="opencagedata.scala.opencage.geocoder_2.11" level="project" />
++    <orderEntry type="library" name="webjars.bowergithub.opencagedata.leaflet.opencage.search" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: .idea/libraries/opencagedata_scala_opencage_geocoder_2_11.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/opencagedata_scala_opencage_geocoder_2_11.xml b/.idea/libraries/opencagedata_scala_opencage_geocoder_2_11.xml
+new file mode 100644
+--- /dev/null	(date 1701051019962)
++++ b/.idea/libraries/opencagedata_scala_opencage_geocoder_2_11.xml	(date 1701051019962)
+@@ -0,0 +1,48 @@
++<component name="libraryTable">
++  <library name="opencagedata.scala.opencage.geocoder_2.11" type="repository">
++    <properties maven-id="com.opencagedata:scala-opencage-geocoder_2.11:1.1.1" />
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/com/opencagedata/scala-opencage-geocoder_2.11/1.1.1/scala-opencage-geocoder_2.11-1.1.1.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/softwaremill/sttp/core_2.11/1.2.3/core_2.11-1.2.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/softwaremill/sttp/async-http-client-backend-future_2.11/1.2.3/async-http-client-backend-future_2.11-1.2.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/softwaremill/sttp/async-http-client-backend_2.11/1.2.3/async-http-client-backend_2.11-1.2.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/asynchttpclient/async-http-client/2.5.2/async-http-client-2.5.2.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/asynchttpclient/async-http-client-netty-utils/2.5.2/async-http-client-netty-utils-2.5.2.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-buffer/4.1.27.Final/netty-buffer-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-codec-http/4.1.27.Final/netty-codec-http-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-codec/4.1.27.Final/netty-codec-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-handler/4.1.27.Final/netty-handler-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-transport/4.1.27.Final/netty-transport-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-codec-socks/4.1.27.Final/netty-codec-socks-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-handler-proxy/4.1.27.Final/netty-handler-proxy-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-transport-native-epoll/4.1.27.Final/netty-transport-native-epoll-4.1.27.Final-linux-x86_64.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-common/4.1.27.Final/netty-common-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-transport-native-unix-common/4.1.27.Final/netty-transport-native-unix-common-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-resolver-dns/4.1.27.Final/netty-resolver-dns-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-resolver/4.1.27.Final/netty-resolver-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-codec-dns/4.1.27.Final/netty-codec-dns-4.1.27.Final.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/typesafe/netty/netty-reactive-streams/2.0.0/netty-reactive-streams-2.0.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/softwaremill/sttp/circe_2.11/1.2.3/circe_2.11-1.2.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/circe/circe-parser_2.11/0.9.3/circe-parser_2.11-0.9.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/circe/circe-jawn_2.11/0.9.3/circe-jawn_2.11-0.9.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/spire-math/jawn-parser_2.11/0.11.1/jawn-parser_2.11-0.11.1.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/circe/circe-core_2.11/0.11.0/circe-core_2.11-0.11.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/circe/circe-numbers_2.11/0.11.0/circe-numbers_2.11-0.11.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-core_2.11/1.5.0/cats-core_2.11-1.5.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-macros_2.11/1.5.0/cats-macros_2.11-1.5.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-kernel_2.11/1.5.0/cats-kernel_2.11-1.5.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/machinist_2.11/0.6.6/machinist_2.11-0.6.6.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.12/scala-reflect-2.11.12.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/circe/circe-generic_2.11/0.11.0/circe-generic_2.11-0.11.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/chuusai/shapeless_2.11/2.3.3/shapeless_2.11-2.3.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/macro-compat_2.11/1.1.1/macro-compat_2.11-1.1.1.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/io/circe/circe-generic-extras_2.11/0.11.0/circe-generic-extras_2.11-0.11.0.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/opencagedata_jopencage.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/opencagedata_jopencage.xml b/.idea/libraries/opencagedata_jopencage.xml
+new file mode 100644
+--- /dev/null	(date 1701051019959)
++++ b/.idea/libraries/opencagedata_jopencage.xml	(date 1701051019959)
+@@ -0,0 +1,19 @@
++<component name="libraryTable">
++  <library name="opencagedata.jopencage" type="repository">
++    <properties maven-id="com.opencagedata:jopencage:2.2.0" />
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/com/opencagedata/jopencage/2.2.0/jopencage-2.2.0.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/client5/httpclient5/5.2.1/httpclient5-5.2.1.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/core5/httpcore5/5.2/httpcore5-5.2.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/core5/httpcore5-h2/5.2/httpcore5-h2-5.2.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar!/" />
++      <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.ideaLibSources/jopencage-2.2.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/webjars_bowergithub_opencagedata_leaflet_opencage_search.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/webjars_bowergithub_opencagedata_leaflet_opencage_search.xml b/.idea/libraries/webjars_bowergithub_opencagedata_leaflet_opencage_search.xml
+new file mode 100644
+--- /dev/null	(date 1701119738510)
++++ b/.idea/libraries/webjars_bowergithub_opencagedata_leaflet_opencage_search.xml	(date 1701119738510)
+@@ -0,0 +1,10 @@
++<component name="libraryTable">
++  <library name="webjars.bowergithub.opencagedata.leaflet.opencage.search" type="repository">
++    <properties maven-id="org.webjars.bowergithub.opencagedata:leaflet-opencage-search:1.3.2" />
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/bowergithub/opencagedata/leaflet-opencage-search/1.3.2/leaflet-opencage-search-1.3.2.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1701051019969)
++++ b/.idea/compiler.xml	(date 1701051019969)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="JavacSettings">
++    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
++      <module name="CSC207-Group-Project" options="--add-exports jdk.jdeps/com.sun.tools.jdeprscan=ALL-UNNAMED" />
++    </option>
++  </component>
++</project>
+\ No newline at end of file

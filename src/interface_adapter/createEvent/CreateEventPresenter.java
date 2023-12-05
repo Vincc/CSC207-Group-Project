@@ -1,14 +1,24 @@
 package interface_adapter.createEvent;
 import interface_adapter.ViewManagerModel;
+import interface_adapter.cancel.CancelState;
 import interface_adapter.logged_in.LoggedInState;
 
 import interface_adapter.logged_in.LoggedInViewModel;
 
+
+import interface_adapter.login.LoginState;
+import use_case.cancel.CancelOutputBoundary;
+import use_case.cancel.CancelOutputData;
+
 import use_case.makeEvent.makeEventOutputBoundary;
 
-public class CreateEventPresenter implements makeEventOutputBoundary{
-    private final LoggedInViewModel loggedInViewModel;
-    private ViewManagerModel viewManagerModel;
+import javax.swing.text.View;
+
+public class CreateEventPresenter implements makeEventOutputBoundary, CancelOutputBoundary {
+
+    final LoggedInViewModel loggedInViewModel;
+    final ViewManagerModel viewManagerModel;
+
     public CreateEventPresenter(ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel){
         this.viewManagerModel = viewManagerModel;
         this.loggedInViewModel = loggedInViewModel;
@@ -30,4 +40,12 @@ public class CreateEventPresenter implements makeEventOutputBoundary{
     }
 
 
+    @Override
+    public void prepareSuccessView(CancelOutputData user) {
+        LoggedInState loggedInState = loggedInViewModel.getState();
+        this.loggedInViewModel.setState(loggedInState);
+        loggedInViewModel.firePropertyChanged();
+        viewManagerModel.setActiveView(loggedInViewModel.getViewName());
+        viewManagerModel.firePropertyChanged();
+    }
 }
