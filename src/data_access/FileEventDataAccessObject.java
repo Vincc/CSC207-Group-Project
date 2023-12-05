@@ -74,6 +74,8 @@ public class FileEventDataAccessObject implements makeEventDataAccessInterface, 
 
     }
     public void addParticipant(String eventName, String username){
+        System.out.println(eventName);
+        System.out.println(username);
         if (existsByName(eventName)) {
             SportsEvent sportEvent = events.get(eventName);
             sportEvent.getAttendance().add(username);
