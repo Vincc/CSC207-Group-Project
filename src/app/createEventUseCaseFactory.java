@@ -1,11 +1,8 @@
 package app;
 
 import data_access.FileEventDataAccessObject;
-import data_access.FileUserDataAccessObject;
 import entity.CommonSportsEventFactory;
-import entity.CommonUserFactory;
 import entity.SportsEventFactory;
-import entity.UserFactory;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.createEvent.CreateEventViewModel;
 
@@ -14,7 +11,7 @@ import view.CreateEventView;
 import interface_adapter.createEvent.CreateEventController;
 import use_case.makeEvent.makeEventInputBoundary;
 import use_case.makeEvent.makeEventOutputBoundary;
-import interface_adapter.createEvent.createEventPresenter;
+import interface_adapter.createEvent.CreateEventPresenter;
 import use_case.makeEvent.makeEventInteractor;
 public class createEventUseCaseFactory {
     private createEventUseCaseFactory(){
@@ -33,7 +30,7 @@ public class createEventUseCaseFactory {
             ViewManagerModel viewManagerModel, CreateEventViewModel createEventViewModel,
             LoggedInViewModel loggedInViewModel, FileEventDataAccessObject eventDataAccessObject){
         SportsEventFactory sportsEventFactory = new CommonSportsEventFactory();
-        makeEventOutputBoundary createEventOutputBoundary = new createEventPresenter(viewManagerModel, loggedInViewModel);
+        makeEventOutputBoundary createEventOutputBoundary = new CreateEventPresenter(viewManagerModel, loggedInViewModel);
         makeEventInputBoundary makeEventInteractor = new makeEventInteractor(eventDataAccessObject, createEventOutputBoundary, sportsEventFactory);
 
         return new CreateEventController(makeEventInteractor);

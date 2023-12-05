@@ -4,16 +4,12 @@ import interface_adapter.logged_in.LoggedInState;
 
 import interface_adapter.logged_in.LoggedInViewModel;
 
-import interface_adapter.login.LoginState;
 import use_case.makeEvent.makeEventOutputBoundary;
-import use_case.makeEvent.makeEventOutputData;
 
-import javax.swing.text.View;
-
-public class createEventPresenter implements makeEventOutputBoundary{
+public class CreateEventPresenter implements makeEventOutputBoundary{
     private final LoggedInViewModel loggedInViewModel;
     private ViewManagerModel viewManagerModel;
-    public createEventPresenter(ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel){
+    public CreateEventPresenter(ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel){
         this.viewManagerModel = viewManagerModel;
         this.loggedInViewModel = loggedInViewModel;
     }
