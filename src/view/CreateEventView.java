@@ -26,6 +26,8 @@ import java.beans.PropertyChangeListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Objects;
+
 import interface_adapter.AutoSuggestor;
 
 public class CreateEventView extends JPanel implements ActionListener, PropertyChangeListener {
@@ -209,7 +211,6 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                     public void keyTyped(KeyEvent e) {
                         CreateEventState currentState = createEventViewModel.getState();
                         String text = eventPlaceInputField.getText() + e.getKeyChar();
-                        AutoSuggestor autoSuggestor = new AutoSuggestor(eventPlaceInputField, container, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 1.0f);
                         ArrayList<String> words = new ArrayList<>();
                         if (text.length() > 4) {
                             JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("60cdd0cbd0ff48ad84bcdd75f39d7c01");
@@ -226,9 +227,12 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                                     words.add(re.getFormatted());
                                 }
                             }
-                            autoSuggestor.setDictionary(words);
-                            autoSuggestor.wordTyped(text);
+                        } else if (Objects.equals(eventPlaceInputField.getText(), "")){
+                            words.clear();
                         }
+                        AutoSuggestor autoSuggestor = new AutoSuggestor(eventPlaceInputField, container, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 1.0f);
+                        autoSuggestor.setDictionary(words);
+                        autoSuggestor.wordTyped(text);
                         currentState.setPlace(text);
                         createEventViewModel.setState(currentState);
                     }
