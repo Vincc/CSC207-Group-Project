@@ -23,7 +23,5 @@ public class CancelInteractor implements CancelInputBoundary{
         User user = userDataAccessObject.get(cancelInputData.getUsername());
         CancelOutputData outputData = new CancelOutputData(user.getName());
         cancelOutputBoundary.prepareSuccessView(outputData);
-
-
     }
 }
