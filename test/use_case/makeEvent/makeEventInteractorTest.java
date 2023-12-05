@@ -1,6 +1,7 @@
 package use_case.makeEvent;
 
 import data_access.FileEventDataAccessObject;
+import data_access.FileUserDataAccessObject;
 import entity.*;
 import junit.framework.TestCase;
 
@@ -53,6 +54,12 @@ public class makeEventInteractorTest extends TestCase {
 
 
     public void testExecute() {
+        FileUserDataAccessObject userDataAccessObject;
+        try {
+            userDataAccessObject = new FileUserDataAccessObject("./test_users.json", new CommonUserFactory());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         FileEventDataAccessObject eventDataAccessObject;
         try {
             eventDataAccessObject = new FileEventDataAccessObject("./test_events.json", new CommonUserFactory(), new CommonSportsEventFactory());
@@ -60,7 +67,7 @@ public class makeEventInteractorTest extends TestCase {
             throw new RuntimeException(e);
         }
 
-        makeEventInputBoundary interactor = new makeEventInteractor(eventDataAccessObject,presenter,sportsEventFactory);
+        makeEventInputBoundary interactor = new makeEventInteractor(eventDataAccessObject,userDataAccessObject,presenter,sportsEventFactory);
         interactor.execute(inputData);
 
     }
