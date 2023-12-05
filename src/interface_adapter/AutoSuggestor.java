@@ -175,16 +175,17 @@ public class AutoSuggestor {
     public String getCurrentlyTypedWord() {//get newest word after last white spaceif any or the first word if no white spaces
         String text = textField.getText();
         String wordBeingTyped = "";
-        if (text.contains(" ")) {
-            int tmp = text.lastIndexOf(" ");
-            if (tmp >= currentIndexOfSpace) {
-                currentIndexOfSpace = tmp;
-                wordBeingTyped = text.substring(text.lastIndexOf(" "));
-            }
-        } else {
-            wordBeingTyped = text;
-        }
-        return wordBeingTyped.trim();
+        //if (text.contains(" ")) {
+        //    int tmp = text.lastIndexOf(" ");
+        //    if (tmp >= currentIndexOfSpace) {
+        //        currentIndexOfSpace = tmp;
+        //        wordBeingTyped = text.substring(text.lastIndexOf(" "));
+        //    }
+        //} else {
+        //    wordBeingTyped = text;
+        //}
+        //return wordBeingTyped.trim();
+        return text;
     }
 
     private void calculatePopUpWindowSize(JLabel label) {
@@ -206,16 +207,15 @@ public class AutoSuggestor {
 
         windowX = container.getX() + textField.getX() + 5;
         if (suggestionsPanel.getHeight() > autoSuggestionPopUpWindow.getMinimumSize().height) {
-            windowY = 32 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
+            windowY = 50 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
         } else {
-            windowY = 32 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getHeight();
+            windowY = 50 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getHeight();
         }
 
         autoSuggestionPopUpWindow.setLocation(windowX, windowY);
         autoSuggestionPopUpWindow.setMinimumSize(new Dimension(textField.getWidth(), 30));
         autoSuggestionPopUpWindow.revalidate();
         autoSuggestionPopUpWindow.repaint();
-        autoSuggestionPopUpWindow.toFront();
 
     }
 
