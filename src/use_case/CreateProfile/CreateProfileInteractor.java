@@ -3,8 +3,6 @@ package use_case.CreateProfile;
 import data_access.FileUserDataAccessObject;
 import entity.User;
 
-import java.util.Objects;
-
 public class CreateProfileInteractor implements CreateProfileInputBoundary {
     final CreateProfileOutputBoundary createProfilePresenter;
     final FileUserDataAccessObject userDataAccessObject;
@@ -18,10 +16,5 @@ public class CreateProfileInteractor implements CreateProfileInputBoundary {
         User user = userDataAccessObject.get(createProfileInputData.getUsername());
         CreateProfileOutputData outputData = new CreateProfileOutputData(user.getName(), user.getUserDescription());
         createProfilePresenter.prepareSuccessView(outputData);
-    }
-
-    @Override
-    public void execute() {
-        createProfilePresenter.prepareSuccessView();
     }
 }
