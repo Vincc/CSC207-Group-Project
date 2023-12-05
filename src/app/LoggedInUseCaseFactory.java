@@ -44,7 +44,7 @@ public class LoggedInUseCaseFactory {
 
             FileUserDataAccessObject userDataAccessObject, CancelViewModel cancelViewModel, FileEventDataAccessObject fileEventDataAccessObject,CreateProfileViewModel createProfileViewModel ){
         CreateEventOutputBoundary createEventOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);
-        CreateProfileOutputBoundary createProfileOutputBoundary = new CreateProfilePresenter(viewManagerModel, createProfileViewModel, loggedInViewModel);
+        CreateProfileOutputBoundary createProfileOutputBoundary = new CreateProfilePresenter(viewManagerModel, createProfileViewModel);
         CreateEventInputBoundary createEventInteractor = new CreateEventInteractor(createEventOutputBoundary,userDataAccessObject);
         UserFactory userFactory = new CommonUserFactory();
         CancelOutputBoundary cancelOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, viewManagerModel);

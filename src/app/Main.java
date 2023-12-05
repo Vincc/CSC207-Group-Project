@@ -72,7 +72,7 @@ public class Main {
 
         views.add(loggedInView, loggedInView.viewName);
 
-        CreateProfileView createProfileView = CreateProfileUseCaseFactory.create(viewManagerModel,createProfileViewModel, loggedInViewModel, userDataAccessObject);
+        CreateProfileView createProfileView = new CreateProfileView(createProfileViewModel);
         views.add(createProfileView, createProfileView.viewName);
 
         CancelView cancelView = new CancelView(cancelViewModel);
