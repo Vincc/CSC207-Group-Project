@@ -10,7 +10,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import use_case.makeEvent.makeEventDataAccessInterface;
 import use_case.joinEvent.joinEventDataAccessInterface;
-
+import use_case.addToCalendar.addToCalendarDataAccessInterface;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +18,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class FileEventDataAccessObject implements makeEventDataAccessInterface, joinEventDataAccessInterface {
+public class FileEventDataAccessObject implements addToCalendarDataAccessInterface, makeEventDataAccessInterface, joinEventDataAccessInterface {
 
 
     private final File jsonFileEvent;
