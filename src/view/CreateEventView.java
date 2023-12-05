@@ -147,6 +147,15 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                     }
                 }
         );
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if (evt.getSource().equals(cancel)){
+                    CreateEventState currentState = createEventViewModel.getState();
+                    createEventController.executeCancel(currentState.getUsername());
+                }
+            }
+        });
         eventDateInputField.addDateChangeListener(
                 new DateChangeListener() {
                     @Override
