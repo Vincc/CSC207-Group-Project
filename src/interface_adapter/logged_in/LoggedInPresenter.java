@@ -8,8 +8,9 @@ import use_case.CreateEvent.CreateEventOutputBoundary;
 import use_case.CreateEvent.CreateEventOutputData;
 import use_case.cancel.CancelOutputBoundary;
 import use_case.cancel.CancelOutputData;
+import use_case.joinEvent.joinEventOutputBoundary;
 
-public class LoggedInPresenter implements CreateEventOutputBoundary, CancelOutputBoundary {
+public class LoggedInPresenter implements CreateEventOutputBoundary, CancelOutputBoundary, joinEventOutputBoundary {
     private final LoggedInViewModel loggedInViewModel;
     private final CreateEventViewModel createEventViewModel;
     private final CancelViewModel cancelViewModel;
@@ -41,4 +42,12 @@ public class LoggedInPresenter implements CreateEventOutputBoundary, CancelOutpu
         this.viewManagerModel.setActiveView(cancelViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
+
+    @Override
+    public void prepareJoinEventSuccessView() {
+        this.viewManagerModel.setActiveView(loggedInViewModel.getViewName());
+        this.viewManagerModel.firePropertyChanged();
+
+    }
+
 }

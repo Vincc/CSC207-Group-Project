@@ -16,15 +16,18 @@ import use_case.makeEvent.makeEventInputBoundary;
 import use_case.makeEvent.makeEventOutputBoundary;
 import interface_adapter.createEvent.createEventPresenter;
 import use_case.makeEvent.makeEventInteractor;
+
+import java.awt.*;
+
 public class createEventUseCaseFactory {
     private createEventUseCaseFactory(){
     }
 
     public static CreateEventView create(ViewManagerModel viewManagerModel, LoggedInViewModel loggedInViewModel, CreateEventViewModel createEventViewModel,
-                                         FileEventDataAccessObject eventDataAccessObject){
+                                         FileEventDataAccessObject eventDataAccessObject, Window mainwindow){
         CreateEventController createEventController = createMakeEventUseCase(viewManagerModel, createEventViewModel,loggedInViewModel, eventDataAccessObject);
 
-        return new CreateEventView(createEventViewModel, createEventController);
+        return new CreateEventView(createEventViewModel, createEventController, mainwindow);
 
     }
 
