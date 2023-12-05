@@ -39,7 +39,7 @@ public class createEventUseCaseFactory {
             LoggedInViewModel loggedInViewModel, FileEventDataAccessObject eventDataAccessObject, FileUserDataAccessObject userDataAccessObject){
         SportsEventFactory sportsEventFactory = new CommonSportsEventFactory();
         makeEventOutputBoundary createEventOutputBoundary = new createEventPresenter(viewManagerModel, loggedInViewModel);
-        makeEventInputBoundary makeEventInteractor = new makeEventInteractor(eventDataAccessObject, createEventOutputBoundary, sportsEventFactory);
+        makeEventInputBoundary makeEventInteractor = new makeEventInteractor(eventDataAccessObject, userDataAccessObject, createEventOutputBoundary, sportsEventFactory);
         CancelOutputBoundary cancelOutputBoundary = new createEventPresenter(viewManagerModel, loggedInViewModel);
         CancelInputBoundary cancelInputBoundary = new CancelInteractor(cancelOutputBoundary,userDataAccessObject);
 

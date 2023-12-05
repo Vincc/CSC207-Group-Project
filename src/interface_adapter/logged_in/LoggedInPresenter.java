@@ -39,6 +39,7 @@ public class LoggedInPresenter implements CreateEventOutputBoundary, CancelOutpu
 
     }
 
+
     @Override
     public void prepareSuccessView(CancelOutputData user) {
         CancelState cancelState = cancelViewModel.getState();

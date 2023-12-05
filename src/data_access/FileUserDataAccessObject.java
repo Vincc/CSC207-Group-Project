@@ -1,9 +1,12 @@
 package data_access;
 
+import entity.SportsEvent;
 import entity.User;
 import entity.UserFactory;
 import use_case.login.LoginUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
+import use_case.joinEvent.joinEventUserDataAccessInterface;
+import use_case.makeEvent.makeEventUserDataAccessInterface;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -18,7 +21,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileWriter;
 
 
-public class FileUserDataAccessObject implements SignupUserDataAccessInterface, LoginUserDataAccessInterface {
+public class FileUserDataAccessObject implements makeEventUserDataAccessInterface, joinEventUserDataAccessInterface, SignupUserDataAccessInterface, LoginUserDataAccessInterface {
 
     private final File jsonFile;
 
@@ -127,5 +130,13 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
         return user;
     }
 
+    @Override
+    public void addEvent(String eventname, String username) {
+        if (existsByName(username)) {
+            User registeredUser = accounts.get(username);
+            registeredUser.getJoinedEvents().add(eventname);
+            this.save();
+        }
+    }
 }
 
