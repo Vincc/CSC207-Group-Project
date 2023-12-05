@@ -122,8 +122,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
     }
 
     private void handleLogOut() {
-        LoggedInState loggedInState = loggedInViewModel.getState();
-        loggedInController.executeCancel(loggedInState.getUsername());
+        loggedInController.excuteLogOut();
         updateEventsList();
     }
 
@@ -148,8 +147,8 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
     }
 
     private String[] extract_event_name(){
-       ArrayList<String> toRet = new ArrayList<>();
-       toRet.add("Select Event");
+        ArrayList<String> toRet = new ArrayList<>();
+        toRet.add("Select Event");
         try {
             List<String> events = loadEventsFromJsonFile("events.json");
             if (events.stream().allMatch(event->event.equals("{}"))){
@@ -209,6 +208,8 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         private JLabel organizerLabel;
         private JLabel detailsLabel;
 
+        private JLabel inEventLabel;
+
         public EventListCellRenderer() {
             setLayout(new BorderLayout());
             setOpaque(true);
@@ -219,6 +220,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             descriptionLabel = new JLabel();
             organizerLabel = new JLabel();
             detailsLabel = new JLabel();
+            inEventLabel = new JLabel();
 
             JPanel eventInfoPanel = new JPanel(new BorderLayout());
             eventInfoPanel.add(eventNameLabel, BorderLayout.NORTH);
@@ -226,7 +228,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             eventInfoPanel.add(organizerLabel, BorderLayout.SOUTH);
             eventInfoPanel.add(detailsLabel, BorderLayout.EAST);
             add(eventInfoPanel, BorderLayout.CENTER);
-            }
+        }
 
         public Component getListCellRendererComponent(JList<? extends String> list, String value, int index,
                                                       boolean isSelected, boolean cellHasFocus) {
@@ -242,6 +244,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
                 String eventLocation = extract_string(eventInfo[8]);
                 String maxAttendance = extract_string(eventInfo[7]);
                 String curAttendance = extract_cur_attendance(value);
+//                String isInEvent = isInGame(value);
 
 
                 eventNameLabel.setText("<html><div style='text-align: center;'><b style='font-size: 20px; color: #3498db;'>" + eventName +
@@ -251,9 +254,12 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
 
                 organizerLabel.setText("<html><div style='text-align: center;'><i style='color: #e74c3c;'>Organizer: " + organizer + "</i></div></html>");
 
-                detailsLabel.setText("<html><div style='color: #2c3e50;'><b>Time:</b> " + eventTime + " | <b>Date:</b> " + eventDate +
+                detailsLabel.setText("<html><div style='color: #2c3e50; font-size: 10px;'>" +
+//                        "<span style='font-size: 14px;'>" + isInEvent + "</span> | " +
+                        "<b>Time:</b> " + eventTime + " | <b>Date:</b> " + eventDate +
                         " | <b>Level:</b> " + levelOfPlay + " | <b>Location:</b> " + eventLocation +
-                        " | <b>Max Attendance:</b> " + maxAttendance + " | <b>Current attendance:</b> " + curAttendance + "</div></html>");
+                        " | <b>Max Attendance:</b> " + maxAttendance + " | <b>Current attendance:</b> " + curAttendance +
+                        "</div></html>");
 
                 if (isSelected) {
                     setBackground(new Color(236, 240, 241));
@@ -287,8 +293,6 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
             }
 
         }
-
-
         private String extract_time(String start) {
             String[] splitedString = start.split(":");
             return splitedString[1].trim() + ":" + splitedString[2].trim().replaceAll("\"", "");
