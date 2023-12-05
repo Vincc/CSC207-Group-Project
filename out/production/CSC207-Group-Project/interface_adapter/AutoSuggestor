@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class AutoSuggestor {
+class AutoSuggestor {
 
     private final JTextField textField;
     private final Window container;
@@ -206,16 +206,15 @@ public class AutoSuggestor {
 
         windowX = container.getX() + textField.getX() + 5;
         if (suggestionsPanel.getHeight() > autoSuggestionPopUpWindow.getMinimumSize().height) {
-            windowY = 700 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
+            windowY = container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
         } else {
-            windowY = 700 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getHeight();
+            windowY = container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getHeight();
         }
 
         autoSuggestionPopUpWindow.setLocation(windowX, windowY);
         autoSuggestionPopUpWindow.setMinimumSize(new Dimension(textField.getWidth(), 30));
         autoSuggestionPopUpWindow.revalidate();
         autoSuggestionPopUpWindow.repaint();
-        autoSuggestionPopUpWindow.toFront();
 
     }
 
@@ -245,7 +244,7 @@ public class AutoSuggestor {
         dictionary.add(word);
     }
 
-    public boolean wordTyped(String typedWord) {
+    boolean wordTyped(String typedWord) {
 
         if (typedWord.isEmpty()) {
             return false;

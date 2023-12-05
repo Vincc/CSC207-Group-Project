@@ -174,16 +174,19 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                         String text = eventPlaceInputField.getText() + e.getKeyChar();
                         AutoSuggestor autoSuggestor = new AutoSuggestor(eventPlaceInputField, container, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 1.0f);
                         ArrayList<String> words = new ArrayList<>();
-                        if (text.length() > 5) {
+                        if (text.length() > 4) {
                             JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("60cdd0cbd0ff48ad84bcdd75f39d7c01");
                             JOpenCageForwardRequest request = new JOpenCageForwardRequest(text);
                             request.setRestrictToCountryCode("ca");
                             // request.setBounds(-79.0, 43.0, -80.0, 44.0);
 
                             JOpenCageResponse response = jOpenCageGeocoder.forward(request);
-                            while (words.size() < 5) {
-                                for (JOpenCageResult i : response.getResults()) {
-                                    words.add(i.getFormatted());
+                            if (response.getResults().size() < 6) {
+                                for (JOpenCageResult re : response.getResults()) {
+                                    words.add(re.getFormatted());
+                            }} else {
+                                for (JOpenCageResult re : response.getResults().subList(0, 5)) {
+                                    words.add(re.getFormatted());
                                 }
                             }
                             autoSuggestor.setDictionary(words);
