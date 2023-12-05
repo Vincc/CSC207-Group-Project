@@ -1,6 +1,8 @@
 package interface_adapter.createProfile;
 
 import interface_adapter.ViewManagerModel;
+import interface_adapter.createEvent.CreateEventState;
+import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
 import use_case.CreateProfile.CreateProfileOutputBoundary;
 import use_case.CreateProfile.CreateProfileOutputData;
@@ -21,10 +23,19 @@ public class CreateProfilePresenter implements CreateProfileOutputBoundary {
 
     @Override
     public void prepareSuccessView(CreateProfileOutputData profileOutputData) {
-        viewManagerModel.firePropertyChanged();
+        CreateProfileState createProfileState = createProfileViewModel.getState();
+        this.createProfileViewModel.setState(createProfileState);
+        this.createProfileViewModel.firePropertyChanged();
+        this.viewManagerModel.setActiveView(createProfileViewModel.getViewName());
+        this.viewManagerModel.firePropertyChanged();
 
     }
     public void prepareSuccessView() {
+        LoggedInState loggedInState = loggedInViewModel.getState();
+        this.loggedInViewModel.setState(loggedInState);
+
+        loggedInViewModel.firePropertyChanged();
+
         viewManagerModel.setActiveView(loggedInViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }
