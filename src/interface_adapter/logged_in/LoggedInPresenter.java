@@ -10,6 +10,7 @@ import use_case.CreateEvent.CreateEventOutputData;
 import use_case.cancel.CancelOutputBoundary;
 import use_case.cancel.CancelOutputData;
 import use_case.joinEvent.joinEventOutputBoundary;
+import use_case.joinEvent.joinEventOutputData;
 import use_case.logOut.LogOutInputBoundary;
 import use_case.logOut.LogoOutOutputBoundary;
 
@@ -51,7 +52,7 @@ public class LoggedInPresenter implements CreateEventOutputBoundary, CancelOutpu
     }
 
     @Override
-    public void prepareJoinEventSuccessView() {
+    public void prepareJoinEventSuccessView(joinEventOutputData user) {
         this.viewManagerModel.setActiveView(loggedInViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }

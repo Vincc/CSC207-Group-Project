@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-class CommonUser implements User {
+public class CommonUser implements User {
 
     private final String name;
     private final String password;
@@ -25,7 +25,7 @@ class CommonUser implements User {
      * @param name
      * @param password
      */
-    CommonUser(String name, String password, LocalDateTime creationTime) {
+    public CommonUser(String name, String password, LocalDateTime creationTime) {
         this.name = name;
         this.password = password;
         this.creationTime = creationTime;
