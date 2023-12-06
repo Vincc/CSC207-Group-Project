@@ -308,7 +308,11 @@ public class AutoSuggestor {
             boolean fullymatches = true;
 
             for (int i = 0; i < typedWord.length(); i++) {//each string in the word
+                try {
                 if (!typedWord.toLowerCase().startsWith(String.valueOf(word.toLowerCase().charAt(i)), i)) {//check for match
+                    fullymatches = false;
+                    break;
+                }} catch (StringIndexOutOfBoundsException e) {
                     fullymatches = false;
                     break;
                 }
