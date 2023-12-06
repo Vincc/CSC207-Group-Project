@@ -57,7 +57,7 @@ public class LoggedInUseCaseFactory {
         CancelInputBoundary cancelInputBoundary = new CancelInteractor(cancelOutputBoundary,userDataAccessObject);
 
         joinEventOutputBoundary joinEventOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel, signupViewModel,viewManagerModel);
-        joinEventInputBoundary joinEventUseCaseInteractor = new joinEventInteractor(fileEventDataAccessObject, userDataAccessObject, joinEventOutputBoundary);
+        joinEventInputBoundary joinEventUseCaseInteractor = new joinEventInteractor(fileEventDataAccessObject, joinEventOutputBoundary);
 
         CreateProfileInputBoundary createProfileInputBoundary = new CreateProfileInteractor(createProfileOutputBoundary, userDataAccessObject);
         LogoOutOutputBoundary logoOutOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel,signupViewModel ,viewManagerModel);
