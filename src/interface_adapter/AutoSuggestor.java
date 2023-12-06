@@ -176,7 +176,7 @@ public class AutoSuggestor {
         return sls;
     }
 
-    private void checkForAndShowSuggestions() {
+    void checkForAndShowSuggestions() {
 
         typedWord = getCurrentlyTypedWord();
 

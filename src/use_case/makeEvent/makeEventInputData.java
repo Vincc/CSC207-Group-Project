@@ -28,24 +28,24 @@ public class makeEventInputData {
         this.eventLevel = eventLevel;
         this.eventMaxAttendance = eventMaxAttendance;
     }
-    String getOrganiserName(){return organiserName;}
-    String getEventName() {
+    public String getOrganiserName(){return organiserName;}
+    public String getEventName() {
         return eventName;
     }
-    String getLocation() {return location;}
-    LocalDate getEventDate() {return eventDate;}
-    LocalDate getEventEndDate() {return eventEndDate;}
-    LocalTime getEventTime() {
+    public String getLocation() {return location;}
+    public LocalDate getEventDate() {return eventDate;}
+    public LocalDate getEventEndDate() {return eventEndDate;}
+    public LocalTime getEventTime() {
         return eventTime;
     }
-    LocalTime getEventEndTime() {return eventEndTime;}
+    public LocalTime getEventEndTime() {return eventEndTime;}
     String getEventLabel() {
         return eventLabel;
     }
-    String getEventLevel() {
+    public String getEventLevel() {
         return eventLevel;
     }
-    int getEventMaxAttendance() {
+    public int getEventMaxAttendance() {
         return eventMaxAttendance;
     }
 }
