@@ -10,7 +10,7 @@ for that purpose. Nearby individuals in the area will then have the opportunity 
 and participate in the sporting activity.
 
 API use:
-Areas of the project where APIs could be used include fetching location data, group-chats for sports events, 
+Areas of the project where APIs could be used include fetching Opencage_example data, group-chats for sports events, 
 user authentication and exporting event details to external calendars.
 
 Location Data - Open Cage:
@@ -22,7 +22,7 @@ Screenshot of generating API-key for testing:
 Longitude and latitude inputs:  
 ![Alt text](images/longlat.png?raw=true)
 
-Output dictionary containing location data:  
+Output dictionary containing Opencage_example data:  
 ![Alt text](images/goethes.png?raw=true)
 
 Calendar exports - Google Calendar api:
