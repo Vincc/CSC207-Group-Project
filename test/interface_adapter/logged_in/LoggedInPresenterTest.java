@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import use_case.CreateEvent.CreateEventOutputData;
 import use_case.cancel.CancelOutputData;
+import use_case.joinEvent.joinEventOutputData;
 
 import static org.junit.Assert.*;
 
@@ -56,8 +57,9 @@ public class LoggedInPresenterTest {
     }
 
     @Test
-    public void testPrepareJoinEventSuccessView(){
-        loggedInPresenter.prepareJoinEventSuccessView();
+    public void testPrepareJoinEventSuccessView() {
+        joinEventOutputData joinEventOutputData = new joinEventOutputData("User1");
+        loggedInPresenter.prepareJoinEventSuccessView(joinEventOutputData);
 
         assertEquals("LoggedInlView",mockViewManagerModel.activeView);
 

@@ -221,28 +221,35 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
                         CreateEventState currentState = createEventViewModel.getState();
                         String text = eventPlaceInputField.getText() + e.getKeyChar();
                         ArrayList<String> words = new ArrayList<>();
+
                         if (text.length() > 4) {
+
                             JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("60cdd0cbd0ff48ad84bcdd75f39d7c01");
                             JOpenCageForwardRequest request = new JOpenCageForwardRequest(text);
                             request.setRestrictToCountryCode("ca");
                             // request.setBounds(-79.0, 43.0, -80.0, 44.0);
 
                             JOpenCageResponse response = jOpenCageGeocoder.forward(request);
+
                             if (response.getResults().size() < 6) {
+
                                 for (JOpenCageResult re : response.getResults()) {
                                     words.add(re.getFormatted());
+
                                 }} else {
+
                                 for (JOpenCageResult re : response.getResults().subList(0, 5)) {
                                     words.add(re.getFormatted());
+
                                 }
                             }
+
+                            AutoSuggestor autoSuggestor = new AutoSuggestor(eventPlaceInputField, container, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 1.0f);
+
+                            autoSuggestor.setDictionary(words);
+
+                            autoSuggestor.wordTyped(text);
                         }
-                        if (Objects.equals(eventPlaceInputField.getText(), "\b")){
-                            words.clear();
-                        }
-                        AutoSuggestor autoSuggestor = new AutoSuggestor(eventPlaceInputField, container, null, Color.WHITE.brighter(), Color.BLUE, Color.RED, 1.0f);
-                        autoSuggestor.setDictionary(words);
-                        autoSuggestor.wordTyped(text);
                         currentState.setPlace(text);
                         createEventViewModel.setState(currentState);
                         //JMenu menu = new JMenu();

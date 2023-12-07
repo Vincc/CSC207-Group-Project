@@ -190,11 +190,14 @@ public class AutoSuggestor {
         boolean added = wordTyped(typedWord);
 
         if (!added) {
+
             if (autoSuggestionPopUpWindow.isVisible()) {
                 autoSuggestionPopUpWindow.setVisible(false);
             }
-        } else {
+        } else if (typedWord.length() > 4) {
+
             showPopUpWindow();
+
             setFocusToTextField();
         }
     }
