@@ -24,6 +24,8 @@ public class CreateProfilePresenter implements CreateProfileOutputBoundary {
     @Override
     public void prepareSuccessView(CreateProfileOutputData profileOutputData) {
         CreateProfileState createProfileState = createProfileViewModel.getState();
+        createProfileState.setUsername(profileOutputData.getUsername());
+        createProfileState.setUserDescription(profileOutputData.getUserDescription());
         this.createProfileViewModel.setState(createProfileState);
         this.createProfileViewModel.firePropertyChanged();
         this.viewManagerModel.setActiveView(createProfileViewModel.getViewName());
