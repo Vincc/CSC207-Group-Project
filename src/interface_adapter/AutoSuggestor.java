@@ -253,10 +253,10 @@ public class AutoSuggestor {
 
         if (suggestionsPanel.getHeight() > autoSuggestionPopUpWindow.getMinimumSize().height) {
 
-            windowY = 60 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
+            windowY = 64 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
         } else {
 
-            windowY = 60 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getHeight();
+            windowY = 64 + container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getHeight();
         }
 
         autoSuggestionPopUpWindow.setLocation(windowX, windowY);

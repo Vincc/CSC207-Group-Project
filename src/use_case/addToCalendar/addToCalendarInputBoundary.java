@@ -6,5 +6,5 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 public interface addToCalendarInputBoundary {
-    void execute(joinEventInputData joinEventInputData)throws GeneralSecurityException, IOException;
+    void execute(addToCalendarInputData addToCalendarInputData)throws GeneralSecurityException, IOException;
 }

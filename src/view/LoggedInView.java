@@ -1,6 +1,5 @@
 package view;
 
-import interface_adapter.createEvent.CreateEventState;
 import interface_adapter.logged_in.LoggedInController;
 import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
@@ -14,7 +13,8 @@ import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.security.GeneralSecurityException;
+import java.util.*;
 import java.util.List;
 
 public class LoggedInView extends JPanel implements PropertyChangeListener {
@@ -27,7 +27,9 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
     private JButton logOutButton;
     private JButton joinEventButton;
     private JButton createEventButton;
+    private JButton addToCalendarButton;
     private JList<String> eventsList;
+    private JComboBox<String> comboBoxlinks;
 
 
     private JButton userProfileButton;
@@ -52,6 +54,12 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         usernameLabel = new JLabel("Currently logged in: ");
         usernameLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         centerPanel.add(usernameLabel);
+
+        comboBoxlinks = new JComboBox<>();
+        addToCalendarButton = new JButton("Add to Calendar");
+        centerPanel.add(comboBoxlinks);
+        centerPanel.add(addToCalendarButton);
+
         add(centerPanel, BorderLayout.WEST);
 
         eventsList = new JList<>();
@@ -103,6 +111,25 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
                             String eventSelected = (String) comboBox.getSelectedItem();
                             loggedInController.addParticipants(eventSelected,currentState.getUsername());
                             updateEventsList();
+                            updateUserEvents();
+                        }
+                    }
+                }
+        );
+        addToCalendarButton.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(addToCalendarButton)) {
+                            LoggedInState currentState = loggedInViewModel.getState();
+                            String eventSelected = (String) comboBoxlinks.getSelectedItem();
+                            try {
+                                loggedInController.addToCalendar(eventSelected,currentState.getUsername());
+                            } catch (GeneralSecurityException e) {
+                                throw new RuntimeException(e);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
                         }
                     }
                 }
@@ -110,9 +137,11 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
 
         userProfileButton.addActionListener(e -> handleCreateProfile());
 
-
         updateEventsList();
         updateUsernameLabel();
+
+
+
     }
 
     private void handleCreateEvent() {
@@ -135,6 +164,11 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
     private void updateUsernameLabel() {
         LoggedInState state = loggedInViewModel.getState();
         usernameLabel.setText("Currently logged in: " + state.getUsername());
+    }
+    private void updateUserEvents() {
+        LoggedInState state = loggedInViewModel.getState();
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(extract_UserEvents_name(state.getUsername()));
+        comboBoxlinks.setModel(model);
     }
 
     private void updateEventsList() {
@@ -170,6 +204,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         return toRet.toArray(new String[0]);
     }
 
+
     private List<String> loadEventsFromJsonFile(String fileName) throws IOException {
         List<String> events = new ArrayList<>();
 
@@ -194,11 +229,62 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
         return events;
     }
 
+    private String[] extract_UserEvents_name(String username){
+        ArrayList<String> toRet = new ArrayList<>();
+        toRet.add("Select Event");
+        try {
+            List<String> users = loadEventsFromJsonFile("users.json");
+            if (users.stream().allMatch(user->user.equals("{}"))){
+                return toRet.toArray(new String[0]);
+
+            }
+            else {
+                users.set(0, users.get(0).substring(1, users.get(0).length() - 1));
+                for (String i:users){
+
+                    String ni = i.substring(1, i.length() - 1);
+                    Map<String, String> user = new HashMap<String, String>();
+                    String[] infoForName = ni.split(",(?![^\\[]*\\])");
+
+                    for (String g: infoForName){
+                        String[] ng = g.split(":");
+
+                        user.put(ng[0].substring(1, ng[0].length() - 1), ng[1].substring(1, ng[1].length() - 1));
+                    }
+
+                    System.out.println(user);
+                    System.out.println(user.get("user name"));
+                    System.out.println(user.get("joined events"));
+                    System.out.println(usernameLabel.getName());
+                    if (user.get("user name").equals(username)){
+                        try {
+                            String replaced = user.get("joined events").substring(1, user.get("joined events").length() - 1).replaceAll("\",\"", "|");
+                            return replaced.split("\\|");
+                        }catch (StringIndexOutOfBoundsException e){
+                            return toRet.toArray(new String[0]);
+                        }
+                    }
+
+
+
+
+                }
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return toRet.toArray(new String[0]);
+    }
+
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if ("state".equals(evt.getPropertyName())) {
             updateUsernameLabel();
             updateEventsList();
+            updateUserEvents();
         }
     }
 
@@ -254,7 +340,7 @@ public class LoggedInView extends JPanel implements PropertyChangeListener {
 
                 organizerLabel.setText("<html><div style='text-align: center;'><i style='color: #e74c3c;'>Organizer: " + organizer + "</i></div></html>");
 
-                detailsLabel.setText("<html><div style='color: #2c3e50; font-size: 10px;'>" +
+                detailsLabel.setText("<html><div style='color: #2c3e50; font-size: 7px;'>" +
 //                        "<span style='font-size: 14px;'>" + isInEvent + "</span> | " +
                         "<b>Time:</b> " + eventTime + " | <b>Date:</b> " + eventDate +
                         " | <b>Level:</b> " + levelOfPlay + " | <b>Location:</b> " + eventLocation +

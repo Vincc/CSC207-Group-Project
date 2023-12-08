@@ -12,7 +12,6 @@ import interface_adapter.createProfile.CreateProfileViewModel;
 import interface_adapter.logged_in.LoggedInController;
 import interface_adapter.logged_in.LoggedInPresenter;
 import interface_adapter.logged_in.LoggedInViewModel;
-import interface_adapter.signup.SignupPresenter;
 import interface_adapter.signup.SignupViewModel;
 import use_case.CreateEvent.CreateEventInputBoundary;
 import use_case.CreateEvent.CreateEventInteractor;
@@ -20,6 +19,8 @@ import use_case.CreateEvent.CreateEventOutputBoundary;
 import use_case.CreateProfile.CreateProfileInputBoundary;
 import use_case.CreateProfile.CreateProfileInteractor;
 import use_case.CreateProfile.CreateProfileOutputBoundary;
+import use_case.addToCalendar.addToCalendarInputBoundary;
+import use_case.addToCalendar.addToCalendarInteractor;
 import use_case.cancel.CancelInputBoundary;
 import use_case.cancel.CancelInteractor;
 import use_case.cancel.CancelOutputBoundary;
@@ -29,7 +30,6 @@ import use_case.joinEvent.joinEventOutputBoundary;
 import use_case.logOut.LogOutInputBoundary;
 import use_case.logOut.LogOutInteractor;
 import use_case.logOut.LogoOutOutputBoundary;
-import use_case.login.LoginOutputBoundary;
 import view.LoggedInView;
 
 public class LoggedInUseCaseFactory {
@@ -63,9 +63,10 @@ public class LoggedInUseCaseFactory {
         LogoOutOutputBoundary logoOutOutputBoundary = new LoggedInPresenter(loggedInViewModel,createEventViewModel, cancelViewModel,signupViewModel ,viewManagerModel);
         LogOutInputBoundary logOutUseCaseInteractor = new LogOutInteractor(logoOutOutputBoundary);
 
+        addToCalendarInputBoundary addToCalendarInteractor = new addToCalendarInteractor(fileEventDataAccessObject);
 
 
-        return new LoggedInController(createEventInteractor, joinEventUseCaseInteractor, cancelInputBoundary, createProfileInputBoundary,logOutUseCaseInteractor);
+        return new LoggedInController(createEventInteractor, joinEventUseCaseInteractor, cancelInputBoundary, createProfileInputBoundary,logOutUseCaseInteractor, addToCalendarInteractor);
 
 
     }

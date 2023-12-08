@@ -16,9 +16,9 @@ public class addToCalendarInteractor implements addToCalendarInputBoundary{
     }
 
     @Override
-    public void execute(joinEventInputData joinEventInputData) throws GeneralSecurityException, IOException {
+    public void execute(addToCalendarInputData addToCalendarInputData) throws GeneralSecurityException, IOException {
         GoogleCalendarApi api = new GoogleCalendarApi();
-        String eventname = joinEventInputData.getEventName();
+        String eventname = addToCalendarInputData.getEventName();
         if (addToCalendarDataAccessInterface.existsByName(eventname)){
             SportsEvent event = addToCalendarDataAccessInterface.getSportEvent(eventname);
             api.addToGoogleCalendar(event);

@@ -231,6 +231,9 @@ public class CreateEventView extends JPanel implements ActionListener, PropertyC
 
                             JOpenCageResponse response = jOpenCageGeocoder.forward(request);
 
+                            words.add("Athletic Centre, 55 Harbord St, Toronto, ON M5S 2W6");
+
+
                             if (response.getResults().size() < 6) {
 
                                 for (JOpenCageResult re : response.getResults()) {
